@@ -1,5 +1,7 @@
-fork by [https://gitee.com/yuzeng84/wxapp](https://gitee.com/yuzeng84/wxapp)
-#微信小程序汇总（10月16日更新小程序100+个教程或资讯与50+个Demo）
+### FORK FROM [https://gitee.com/yuzeng84/wxapp](https://gitee.com/yuzeng84/wxapp)
+---
+
+微信小程序汇总（10月16日更新小程序100+个教程或资讯与50+个Demo）
 ---
 ![微信小程序联盟出品](https://git.oschina.net/uploads/images/2017/0731/155012_661dacae_1359524.jpeg "微信小程序联盟.jpg")
 
