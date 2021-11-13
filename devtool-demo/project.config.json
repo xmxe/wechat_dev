@@ -36,7 +36,7 @@
     "compileType": "miniprogram",
     "libVersion": "2.20.1",
     "appid": "wxd3f4429c857343e3",
-    "projectname": "official_demo",
+    "projectname": "devtool-demo",
     "debugOptions": {
         "hidedInDevtools": []
     },
