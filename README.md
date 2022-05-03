@@ -1364,3 +1364,5 @@
 - [微信小程序demo：天气预报](http://www.wxapp-union.com/forum.php?mod=viewthread&tid=4912)
 - [微信小程序demo：图灵聊天机器人](http://www.wxapp-union.com/forum.php?mod=viewthread&tid=4942)
 - [微信小程序练习demo：map地图：marker标记](http://www.wxapp-union.com/forum.php?mod=viewthread&tid=4992)
+
+- [WXminiprogram-Focus-clock](https://github.com/realyao/WXminiprogram-Focus-clock)
