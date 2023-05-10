@@ -1,0 +1,44 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">提交预约</view>
+</cu-custom>
+
+<view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 预约类型: {{typeName}}
+    </view>
+  </view>
+
+  <view>
+<form bindsubmit="formSubmit" rules="{{rules}}">
+
+  
+  <view class="cu-form-group margin-top">
+		<view class="title">宠物名字</view>
+		<picker bindchange="bindPetPickerChange" value="{{petIndex}}" range-key="{{'name'}}" range="{{petList}}" name="petId">
+			<view class="picker">
+				{{petList[petIndex]?petList[petIndex].name:'请选择宠物名字'}}
+			</view>
+		</picker>
+  </view>
+  <view class="cu-form-group margin-top">
+    <view class="title" wx:if="{{isDoctor}}">医生名字</view>
+    <view class="title" wx:else>美容师名字</view>
+		<picker bindchange="bindDoctorPickerChange" value="{{doctorIndex}}" range-key="{{'name'}}" range="{{doctorList}}" name="doctorId">
+			<view class="picker">
+				{{doctorList[doctorIndex]?doctorList[doctorIndex].name:'请选择医生名字'}}
+			</view>
+		</picker>
+	</view>
+
+ 
+  <view class="cu-form-group margin-top">
+		<view class="title" prop="title">预约备注</view>
+		<input placeholder="请输入预约备注" name="remark" ></input>
+	</view>
+  <view class="padding flex flex-direction">
+    <button class="cu-btn bg-blue lg" form-type="submit">提交</button>
+  </view>
+
+</form>
+</view>

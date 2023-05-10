@@ -1,0 +1,54 @@
+<scroll-view scroll-y class="scrollPage">
+<cu-custom bgColor="bg-gradual-green" >
+	<view slot="content">我的</view>
+</cu-custom>
+<view class="container">
+  <view class="profile-info" bindtap="goLogin">
+    <image class="avatar" src="{{userInfo.imgpath}}"></image>
+    <view class="info">
+      <text class="name">{{userInfo.loginname}}</text>
+    </view>
+  </view>
+
+  <view class='separate'></view>
+
+
+  <view class='user_row'>
+    <view class='user_row_left'>个人中心</view>
+  </view>
+  <view class='user_column'>
+
+  
+    <view class='user_column_item' >
+      <image class='user_column_item_image' src='/static/images/feedback.png'></image>
+      <view class='user_column_item_text'>我的消息</view>
+    </view>
+    <view class='user_column_item' bindtap='goMyInfo'>
+      <image class='user_column_item_image' src='/static/images/feedback.png'></image>
+      <view class='user_column_item_text'>我的资料</view>
+    </view>
+    <view class='user_column_item' bindtap="goPetInfo">
+      <image class='user_column_item_image' src='/static/images/feedback.png'></image>
+      <view class='user_column_item_text'>宠物资料</view>
+    </view>
+  </view>
+  <view class='separate'></view>
+  <view class='user_column'>
+    <view class='user_column_item' bindtap="goPetCase">
+      <image class='user_column_item_image' src='/static/images/feedback.png'></image>
+      <view class='user_column_item_text'>宠物病历</view>
+    </view>
+    <view class='user_column_item' >
+      <image class='user_column_item_image' src='/static/images/feedback.png'></image>
+      <view class='user_column_item_text'>我的预约</view>
+    </view>
+    <view class='user_column_item' >
+      <image class='user_column_item_image' src='/static/images/feedback.png'></image>
+      <view class='user_column_item_text'>联系客服</view>
+    </view>
+  </view>
+  <view class='separate'></view>
+
+  <view class="logout" wx:if="{{hasLogin}}" bindtap="exitLogin">退出登录</view>
+</view>
+</scroll-view>

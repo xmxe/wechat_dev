@@ -1,0 +1,124 @@
+<!--index.wxml-->
+<view class="container">
+<!-- <view class="search">
+    <navigator url="/pages/search/search" class="input">
+      <van-icon name="search"/>
+      <text class="txt">服务搜索, 共{{serviceCount}}款优质服务</text>
+    </navigator>
+  </view> -->
+  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+    <swiper-item wx:for="{{banner}}" wx:key="id">
+      <block wx:if="{{item.link>0}}">
+        <navigator url="/pages/service/service?id={{item.link}}">
+        <image src="{{item.url}}" background-size="cover"></image>
+        </navigator>
+      </block>
+      <block wx:else>
+        <image src="{{item.url}}" background-size="cover"></image>
+      </block>
+    </swiper-item>
+  </swiper>
+
+  <view class="cu-list grid col-3 no-border">
+    <view class="cu-item"  bindtap="toNotice">
+      <view class="cuIcon-messagefill text-red">
+      </view>
+      <text>公告</text>
+    </view>
+    <view class="cu-item" bindtap="toHospital">
+      <view class="cuIcon-homefill text-red">
+      </view>
+      <text>医院</text>
+    </view>
+    <view class="cu-item" bindtap="toUcenter">
+      <view class="cuIcon-myfill text-red">
+      </view>
+      <text>我的</text>
+    </view>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 公告展示
+    </view>
+  </view>
+  <view class="cu-list grid col-4 no-border">
+    <view class="cu-item" bindtap="toNotice" data-type="招养">
+      <view class="cuIcon-circlefill text-red">
+      </view>
+      <text>招养</text>
+    </view>
+    <view class="cu-item" bindtap="toNotice" data-type="领养">
+      <view class="cuIcon-circlefill text-red">
+      </view>
+      <text>领养</text>
+    </view>
+    <view class="cu-item" bindtap="toNotice" data-type="寄养">
+      <view class="cuIcon-circlefill text-red">
+      </view>
+      <text>寄养</text>
+    </view>
+    <view class="cu-item" bindtap="toNotice" data-type="丢失">
+      <view class="cuIcon-circlefill text-red">
+      </view>
+      <text>丢失</text>
+    </view>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 预约挂号
+    </view>
+  </view>
+  <view class="cu-list grid col-4 no-border">
+    <view class="cu-item"  data-appType="11" bindtap="addApply">
+      <view class="cuIcon-evaluate_fill text-red">
+      </view>
+      <text>门诊</text>
+    </view>
+    <view class="cu-item" data-appType="12" bindtap="addApply">
+      <view class="cuIcon-evaluate_fill text-red">
+      </view>
+      <text>绝育</text>
+    </view>
+    <view class="cu-item" data-appType="13" bindtap="addApply">
+      <view class="cuIcon-evaluate_fill text-red">
+      </view>
+      <text>疫苗</text>
+    </view>
+   
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 预约洗美
+    </view>
+  </view>
+  <view class="cu-list grid col-4 no-border">
+    <view class="cu-item"  data-appType="21" bindtap="addApply">
+      <view class="cuIcon-cardboardfill text-red">
+      </view>
+      <text>洗澡</text>
+    </view>
+    <view class="cu-item" data-appType="22" bindtap="addApply">
+      <view class="cuIcon-cardboardfill text-red">
+      </view>
+      <text>洗牙</text>
+    </view>
+    <view class="cu-item" data-appType="23" bindtap="addApply">
+      <view class="cuIcon-cardboardfill text-red">
+      </view>
+      <text>美容</text>
+    </view>
+    <view class="cu-item" data-appType="24" bindtap="addApply">
+      <view class="cuIcon-cardboardfill text-red">
+      </view>
+      <text>其它</text>
+    </view>
+   
+  </view>
+ 
+</view>
+
+
+  

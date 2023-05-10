@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>公告管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/resources/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/resources/css/public.css" media="all"/>
+</head>
+<body class="childrenBody">
+<!-- 查询条件开始 -->
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
+    <legend>查询条件</legend>
+</fieldset>
+<blockquote class="layui-elem-quote">
+    <form action="" method="post" id="searchFrm" lay-filter="searchFrm" class="layui-form layui-form-pane">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">公告标题</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="title" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">公告类型</label>
+                <div class="layui-input-inline">
+                    <select name="type">
+                        <option value=""></option>
+                        <option value="寄养公告">寄养公告</option>
+                        <option value="丢失公告">丢失公告</option>
+                        <option value="领养公告">领养公告</option>
+                        <option value="招养公告">招养公告</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">开始时间</label>
+                <div class="layui-input-inline">
+                    <input type="tel" name="startTime" id="startTime" readonly="readonly"
+                           placeholder="yyyy-MM-dd HH:mm:ss" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">结束时间</label>
+                <div class="layui-input-inline">
+                    <input type="tel" name="endTime" id="endTime" readonly="readonly" placeholder="yyyy-MM-dd HH:mm:ss"
+                           class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="text-align: center;">
+                <button type="button" class="layui-btn" lay-submit="" lay-filter="doSearch"><span
+                        class="layui-icon layui-icon-search"></span>查询
+                </button>
+                <button type="reset" class="layui-btn layui-btn-warm"><span
+                        class="layui-icon layui-icon-refresh-1"></span>重置
+                </button>
+            </div>
+        </div>
+    </form>
+</blockquote>
+<!-- 查询条件结束-->
+
+
+<!-- 数据表格开始 -->
+<div>
+    <table class="layui-hide" id="announcementTable" lay-filter="announcementTable"></table>
+    <div id="announcementToolBar" style="display: none;">
+        <button type="button" lay-event="add" class="layui-btn layui-btn-sm"><span
+                class="layui-icon layui-icon-add-1"></span>添加公告
+        </button>
+        <button type="button" lay-event="batchDelete" class="layui-btn layui-btn-sm layui-btn-danger"><span
+                class="layui-icon layui-icon-delete"></span>批量删除
+        </button>
+    </div>
+
+    <div id="announcementRowBar" style="display: none;">
+        <button type="button" lay-event="update" class="layui-btn layui-btn-sm"><span
+                class="layui-icon layui-icon-edit"></span>更新
+        </button>
+        <button type="button" lay-event="delete" class="layui-btn layui-btn-sm layui-btn-danger"><span
+                class="layui-icon layui-icon-delete"></span>删除
+        </button>
+        <button type="button" lay-event="show" class="layui-btn layui-btn-sm"><span
+                class="layui-icon layui-icon-about"></span>查看
+        </button>
+    </div>
+</div>
+
+
+<!-- 数据表格结束 -->
+
+
+<!-- 添加和修改的弹出层开始 -->
+<div style="display: none;padding: 5px" id="addOrUpdateDiv">
+    <form action="" method="post" class="layui-form layui-form-pane" id="dataFrm" lay-filter="dataFrm">
+        <div class="layui-form-item">
+            <label class="layui-form-label">公告标题</label>
+            <div class="layui-input-block">
+                <input type="hidden" name="id">
+                <input type="text" name="title" lay-verify="required" autocomplete="off" placeholder="请输入标题"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">公告类型</label>
+            <div class="layui-input-block">
+                <select name="type" lay-verify="required">
+                    <option value=""></option>
+                    <option value="寄养公告">寄养公告</option>
+                    <option value="丢失公告">丢失公告</option>
+                    <option value="领养公告">领养公告</option>
+                    <option value="招养公告">招养公告</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">宠物名字</label>
+            <div class="layui-input-inline">
+                <select name="petId" id="search_pet_id">
+                    <option value="0">请选择宠物名字</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">宠物状态</label>
+            <div class="layui-input-block">
+                <input type="text" name="status" lay-verify="required" autocomplete="off" placeholder="请输入宠物状态"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">公告内容</label>
+            <div class="layui-input-block">
+                <textarea class="layui-textarea" lay-verify="required" name="content" id="content"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="text-align: center;">
+                <button type="button" class="layui-btn" lay-submit="" id="doSubmit"><span
+                        class="layui-icon layui-icon-add-1"></span>提交
+                </button>
+                <button type="reset" class="layui-btn layui-btn-warm"><span
+                        class="layui-icon layui-icon-refresh-1"></span>重置
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- 添加和修改的弹出层结束 -->
+
+
+<!-- 查看弹出层的开始 -->
+<div style="display: none;padding: 5px" id="showAnnouncementDiv">
+    <h2 id="show_title" align="center" ></h2>
+
+    <div style="text-align: left;margin-left: 200px">
+        发布时间: &nbsp;&nbsp;<span id="show_createtime"></span>
+    </div>
+    <div style="text-align: left;margin-left: 200px">
+        公告类型: &nbsp;&nbsp;<span id="show_type"></span>
+    </div>
+    <div style="text-align: left;margin-left: 200px">
+        宠物名字: &nbsp;&nbsp;<span id="show_petname"></span>
+    </div>
+    <div style="text-align: left;margin-left: 200px">
+        宠物性别: &nbsp;&nbsp;<span id="show_petsex"></span>
+    </div>
+    <div style="text-align: left;margin-left: 200px">
+        宠物状态: &nbsp;&nbsp;<span id="show_status"></span>
+    </div>
+    <div style="text-align: left;margin-left: 200px">
+        主人姓名: &nbsp;&nbsp;<span id="show_opername"></span>
+    </div>
+    <div style="text-align: left;margin-left: 200px">
+        主人性别: &nbsp;&nbsp;<span id="show_ownersex"></span>
+    </div>
+
+    <hr>
+    <div style="margin-left: 75px;margin-right: 75px;margin-top: 25px" id="show_content"></div>
+
+</div>
+<!-- 查看弹出层的结束-->
+
+
+<script type="text/javascript" src="/resources/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['jquery', 'form', 'table', 'layer', 'laydate', 'layedit'], function () {
+        var $ = layui.jquery;
+        var form = layui.form;
+        var table = layui.table;
+        var layer = layui.layer;
+        var laydate = layui.laydate;
+        var layedit = layui.layedit;
+        //初始化时间选择器
+        laydate.render({
+            elem: '#startTime',
+            type: 'datetime'
+        });
+        laydate.render({
+            elem: '#endTime',
+            type: 'datetime'
+        });
+
+        $.get("/pet/loadAllPetForSelect",function(res){
+            var data=res.data;
+            var dom=$("#search_pet_id");
+            var html='<option value="0">请选择宠物名字</option>'
+            $.each(data,function(index,item){
+                html+='<option value="'+item.id+'">'+item.name+'</option>'
+            });
+            dom.html(html);
+            form.render("select");
+        })
+
+        //初始化富文本
+        var editIndex = layedit.build('content');
+        //加载 数据
+        var tableIns = table.render({
+            elem: '#announcementTable'
+            , url: '/announcement/loadAllAnnouncement'
+            , toolbar: '#announcementToolBar' //开启头部工具栏，并为其绑定左侧模板
+            , title: '公告数据表'
+            , height: 'full-220'
+            , page: true
+            , cols: [
+                [
+                    {type: 'checkbox', align: 'center'}
+                    , {field: 'id', title: 'ID', align: 'center', width: '80'}
+                    , {field: 'title', title: '标题', align: 'center', width: '300'}
+                    , {field: 'type', title: '公告类型', align: 'center', width: '150'}
+                    , {field: 'petName', title: '宠物名', align: 'center', width: '120'}
+                    , {field: 'petSex', title: '宠物性别', align: 'center', width: '120'}
+                    , {field: 'status', title: '宠物状态', align: 'center', width: '120'}
+                    , {field: 'petBirth', title: '出生日期', align: 'center', width: '220'}
+                    , {field: 'ownerName', title: '宠物主人', align: 'center', width: '150'}
+                    , {field: 'ownerSex', title: '主人性别', align: 'center', width: '100'}
+                    , {field: 'createTime', title: '发布时间', align: 'center', width: '220'}
+                    , {fixed: 'right', title: '操作', toolbar: '#announcementRowBar', align: 'center', width: '300'}
+                ]
+            ]
+        });
+
+        //模糊查询
+        form.on("submit(doSearch)", function (data) {
+            tableIns.reload({
+                where: data.field,
+                page: {
+                    curr: 1
+                }
+            });
+            return false;
+        });
+
+
+        //监听工具条的事件
+        table.on("toolbar(announcementTable)", function (obj) {
+            switch (obj.event) {
+                case 'batchDelete':
+                    batchDelete();
+                    break;
+                case 'add':
+                    openAddLayer();
+                    break;
+            }
+            ;
+        });
+
+        //监听行工具条的事件
+        table.on("tool(announcementTable)", function (obj) {
+            var data = obj.data; //获得当前行数据
+            switch (obj.event) {
+                case 'update':
+                    openUpdateAnnouncementLayer(data);
+                    break;
+                case 'delete':
+                    deleteAnnouncement(data);
+                    break;
+                case 'show':
+                    showAnnouncement(data);
+                    break;
+            }
+            ;
+        });
+
+        var mainIndex;
+        var url;
+
+        //打开添加的弹出层
+        function openAddLayer() {
+            mainIndex = layer.open({
+                type: 1,
+                content: $("#addOrUpdateDiv"),
+                area: ['800px', '700px'],
+                title: '发布公告',
+                success: function () {
+                    $("#dataFrm")[0].reset();
+                    layedit.setContent(editIndex, "");
+                    url = "/announcement/addAnnouncement";
+                }
+            });
+        }
+
+        //打开修改的弹出层
+        function openUpdateAnnouncementLayer(data) {
+            mainIndex = layer.open({
+                type: 1,
+                content: $("#addOrUpdateDiv"),
+                area: ['800px', '700px'],
+                title: '修改公告',
+                success: function () {
+                    $("#dataFrm")[0].reset();
+                    //装载新的数据
+                    form.val("dataFrm", data);
+                    layedit.setContent(editIndex, data.content);
+                    url = "/announcement/updateAnnouncement";
+                }
+            });
+        }
+
+        $("#doSubmit").click(function () {
+            //同步富文本和textarea里面的内容
+            layedit.sync(editIndex);
+            var data = $("#dataFrm").serialize();
+            $.post(url, data, function (res) {
+                if (res.code == 200) {
+                    tableIns.reload();
+                }
+                layer.msg(res.msg);
+                layer.close(mainIndex);
+            })
+        })
+
+        //删除
+        function deleteAnnouncement(data) {
+            layer.confirm('你确定要删除【' + data.title + '】这条公告吗?', {icon: 3, title: '提示'}, function (index) {
+                $.post("/announcement/deleteAnnouncement", {id: data.id}, function (res) {
+                    if (res.code == 200) {
+                        tableIns.reload();
+                    }
+                    layer.msg(res.msg);
+                })
+                layer.close(index);
+            });
+        }
+
+        //批量删除
+        function batchDelete() {
+            //得到选中行
+            var checkStatus = table.checkStatus('announcementTable');
+            var dataLength = checkStatus.data.length;
+            if (dataLength > 0) {
+                layer.confirm('你确定要删除这些公告数据吗?', {icon: 3, title: '提示'}, function (index) {
+                    var data = checkStatus.data; //获取选中行的数据
+                    var ids = "";
+                    $.each(data, function (index, item) {
+                        if (index == 0) {
+                            ids += "ids=" + item.id;
+                        } else {
+                            ids += "&ids=" + item.id;
+                        }
+                    })
+                    $.post("/announcement/batchDeleteAnnouncement", ids, function (res) {
+                        if (res.code == 200) {
+                            tableIns.reload();
+                        }
+                        layer.msg(res.msg);
+                    })
+                    layer.close(index);
+                });
+
+            } else {
+                layer.msg("请选中操作行")
+            }
+        }
+
+        //弹出查看层
+        function showAnnouncement(data) {
+            mainIndex = layer.open({
+                type: 1,
+                content: $("#showAnnouncementDiv"),
+                area: ['800px', '600px'],
+                title: '查看公告',
+                success: function () {
+                    $("#show_title").html(data.title);
+                    $("#show_type").html(data.type);
+                    $("#show_petname").html(data.petName);
+                    $("#show_petsex").html(data.petSex);
+                    $("#show_status").html(data.status);
+                    $("#show_opername").html(data.ownerName);
+                    $("#show_ownersex").html(data.ownerSex);
+                    $("#show_createtime").html(data.createTime);
+                    $("#show_content").html(data.content);
+                }
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,4 +1,7 @@
 ### FORK FROM [https://gitee.com/yuzeng84/wxapp](https://gitee.com/yuzeng84/wxapp)
+
+[微信小程序-餐饮点餐外卖-开箱即用](https://github.com/woniudiancang/bee)
+
 ---
 
 微信小程序汇总（10月16日更新小程序100+个教程或资讯与50+个Demo）

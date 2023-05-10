@@ -1,0 +1,31 @@
+<cu-custom bgColor="bg-gradual-blue" >
+	<view slot="content">公告列表</view>
+</cu-custom>
+<view class="padding-xl">
+  <button class="cu-btn block line-orange lg" bindtap="toNewNotice">
+    <text class="cuIcon-add"></text> 新建公告</button>
+</view>
+
+<view class="cu-list menu-avatar" wx:for="{{ announcementList }}" wx:key="id">
+  
+    <view class="cu-item" bindtap="goNoticeDetail" data-id="{{item.id}}">
+      <view class="cu-avatar round lg" style="background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606970818562&di=f17d0336f0f0b389152ecd98311695af&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Felement_origin_min_pic%2F01%2F51%2F69%2F415745c99f14518.jpg);">
+      </view>
+      <view class="content">
+        <view class="text-grey">
+          <text class="text-cut">{{item.title}}</text>
+          <view class="cu-tag round bg-orange sm">{{item.type}}  </view>
+        </view>
+        <view class="text-gray text-sm flex">
+          <text class="text-cut">{{item.content}}</text>
+        </view>
+      </view>
+      <view class="action">
+        <view class="text-grey text-xs">{{item.createTime}}</view>
+        
+      </view>
+    </view>
+
+  </view>
+
+
