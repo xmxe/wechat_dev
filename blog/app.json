@@ -1,0 +1,52 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/main/main",
+        "pages/articles/articles",
+        "pages/categories/categories",
+        "pages/category/category",
+        "pages/tags/tags",
+        "pages/tag/tag",
+        "pages/about/about",
+        "pages/search/search"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "熊猫小二",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#959595",
+        "selectedColor": "#3F91F0",
+        "borderStyle": "white",
+        "backgroundColor": "#ffffff",
+        "list": [{
+                "pagePath": "pages/index/index",
+                "iconPath": "static/icon/tabar/home.png",
+                "selectedIconPath": "static/icon/tabar/home_h.png",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/categories/categories",
+                "iconPath": "static/icon/tabar/list.png",
+                "selectedIconPath": "static/icon/tabar/list1.png",
+                "text": "分类"
+            },
+            {
+                "pagePath": "pages/tags/tags",
+                "iconPath": "static/icon/tabar/my.png",
+                "selectedIconPath": "static/icon/tabar/my_h.png",
+                "text": "标签"
+            }
+        ]
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "plugins": {
+        "htmltowxml": {
+            "version": "1.4.0",
+            "provider": "wxa51b9c855ae38f3c"
+        }
+    }
+}
