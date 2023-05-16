@@ -27,7 +27,7 @@
 }
 
 .cnet-img-w {
-    height: 328rpx;
+    height: 300rpx;
     border-top-left-radius: 20rpx;
     border-top-right-radius: 20rpx;
     overflow: hidden;
@@ -62,11 +62,6 @@
 }
 
 /* 标题 */
-.index-h-all {
-    color: var(--SubtitleColor);
-    font-size: 400;
-    font-size: 28rpx;
-}
 
 .index-h {
     display: -webkit-box;
@@ -105,7 +100,7 @@
 
 .swiper-item {
     display: block;
-    height: 340rpx;
+    height: 400rpx;
     border-radius: 20rpx;
     overflow: hidden;
     /* box-shadow:0px 5px 15px rgba(0,0,0,0.16); */
@@ -250,7 +245,7 @@
 .index-page-title {
     position: absolute;
     left: 5rpx;
-    background: -webkit-linear-gradient(rgb(185, 140, 140), #333);
+    background: -webkit-linear-gradient(rgb(36, 15, 15), #333);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

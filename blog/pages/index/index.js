@@ -1,6 +1,6 @@
-// const Api = require('../../utils/api.js');
-// const wxRequest = require('../../utils/wxRequest.js')
-// import config from '../../config/config.js'
+// const Api = require('/utils/api.js');
+// const wxRequest = require('/utils/wxRequest.js')
+// import config from '/config/config.js'
 const appInst = getApp();
 const {
     config,
@@ -39,7 +39,7 @@ Page({
     },
     onShareAppMessage: function () {
         return {
-            title: `你必须非常努力,才能看起来毫不费力."---${webSiteName}"`,
+            title: `${webSiteName}`,
             path: 'pages/index/index',
             success: function (res) {
                 // 转发成功
@@ -51,8 +51,8 @@ Page({
     },
     onShareTimeline() {
         return {
-            title: `你必须非常努力,才能看起来毫不费力."---${webSiteName}"`,
-            imageUrl: '../../static/images/logo-icon.png'
+            title: `${webSiteName}`,
+            imageUrl: '/static/images/logo-icon.png'
         }
     },
     onPullDownRefresh: function () {
@@ -108,7 +108,6 @@ Page({
         // 获取滑动图片的文章
         wxRequest.getRequest(Api.getswiper())
             .then(response => {
-                // console.log(response);
                 if (response.statusCode == '200' && response.data.length > 0) {
                     self.setData({
                         displaySwiper: 'block',
@@ -120,7 +119,6 @@ Page({
                     });
                 }
             }).catch(function (response) {
-                // console.log(response);
                 self.setData({
                     showerror: "block",
                     floatDisplay: "none"
@@ -129,13 +127,12 @@ Page({
     },
     // 跳转至查看小程序列表页面或文章详情页
     redictAppDetail: function (e) {
-        // console.log(e);
         let {
             url
         } = e.currentTarget.dataset
         if (url) {
             wx.navigateTo({
-                url: `/pages/articles/articles?id=${url}`,
+                url: `/pages/feature/articles/articles?id=${encodeURIComponent(url)}`,
                 success: (result) => {
 
                 },
@@ -150,7 +147,6 @@ Page({
         // 请求数据
         wxRequest.getRequest(Api.getPostList(page))
             .then(res => {
-                // console.log(res);
                 if (res.statusCode == 200) {
                     this.setData({
                         pageCounts: res.data.pageCount,
@@ -198,7 +194,7 @@ Page({
         }
         // 跳转到web-view内嵌的页面 
         else if (redicttype == 'webpage') {
-            url = '../webpage/webpage?url=' + url;
+            url = `/pages/feature/webpage/webpage?url=${url}`;
             wx.navigateTo({
                 url: url
             })

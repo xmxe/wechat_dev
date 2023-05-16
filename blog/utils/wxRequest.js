@@ -13,7 +13,6 @@ function wxPromisify(fn) {
                 //失败
                 reject(res)
                 wx.hideNavigationBarLoading()
-                console.log(res)
             }
             fn(obj)
         })

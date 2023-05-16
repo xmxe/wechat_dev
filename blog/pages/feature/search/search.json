@@ -1,7 +1,5 @@
 {
-    "enablePullDownRefresh": true,
     "usingComponents": {
         "hr-search": "/components/search/search"
-    },
-    "backgroundTextStyle": "dark"
+    }
 }

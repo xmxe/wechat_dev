@@ -1,14 +1,16 @@
 {
     "pages": [
         "pages/index/index",
-        "pages/main/main",
-        "pages/articles/articles",
-        "pages/categories/categories",
-        "pages/category/category",
-        "pages/tags/tags",
-        "pages/tag/tag",
-        "pages/about/about",
-        "pages/search/search"
+        "pages/mine/mine",
+        "pages/feature/webpage/webpage",
+        "pages/feature/articles/articles",
+        "pages/feature/categories/categories",
+        "pages/feature/category/category",
+        "pages/feature/tags/tags",
+        "pages/feature/tag/tag",
+        "pages/feature/friends/friends",
+        "pages/feature/search/search"
+        
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -27,17 +29,12 @@
                 "selectedIconPath": "static/icon/tabar/home_h.png",
                 "text": "首页"
             },
+            
             {
-                "pagePath": "pages/categories/categories",
-                "iconPath": "static/icon/tabar/list.png",
-                "selectedIconPath": "static/icon/tabar/list1.png",
-                "text": "分类"
-            },
-            {
-                "pagePath": "pages/tags/tags",
+                "pagePath": "pages/mine/mine",
                 "iconPath": "static/icon/tabar/my.png",
                 "selectedIconPath": "static/icon/tabar/my_h.png",
-                "text": "标签"
+                "text": "我的"
             }
         ]
     },

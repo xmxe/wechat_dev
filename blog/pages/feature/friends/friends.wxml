@@ -1,0 +1,36 @@
+<view class="bar">
+    <view class='moreBarText'>↓</view>
+    <scroll-view class='moreBar' scroll-x>
+        <view class='moreApp'>
+            <image src='/static/images/copy.png' bindtap='navigateToXiaoZhu' style='' />
+            <view class='moreAppText'>小猪冒险</view>
+        </view>
+        <view class='moreApp'>
+            <image src='/static/images/copy.png' bindtap='navigateToWenZiBao' style='' />
+            <view class='moreAppText'>文字宝</view>
+        </view>
+
+        <view class='moreApp'>
+            <image src='/static/images/copy.png' bindtap='navigateToJieQi' style='' />
+            <view class='moreAppText'>24节气</view>
+        </view>
+
+        <view class='moreApp'>
+            <image src='/static/images/copy.png' bindtap='navigateToPinTu' style='' />
+            <view class='moreAppText'>海报拼图</view>
+        </view>
+        <view class='moreApp'>
+            <image src='/static/images/copy.png' bindtap='navigateToHaoYangMao' style='' />
+            <view class='moreAppText'>薅羊毛</view>
+        </view>
+        <view class='moreApp'>
+            <image src='/static/images/copy.png' bindtap='navigateToWuZiQi' style='' />
+            <view class='moreAppText'>五子棋</view>
+        </view>
+        <view class='moreApp'>
+            <image src='/static/images/copy.png' bindtap='navigateToBiaoQing' style='' />
+            <view class='moreAppText'>传意表情</view>
+        </view>
+    </scroll-view>
+
+</view>

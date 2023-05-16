@@ -1,11 +1,14 @@
 <!--首页-->
 
-<import src="../../template/loading.wxml" />
-<wxs src="../../template/dates.wxs" module="tools"></wxs>
+<import src="/template/loading.wxml" />
+<wxs src="/template/dates.wxs" module="tools"></wxs>
 <!-- 首次进入引导添加到“我的小程序” -->
 <view class="addMyMiniapp" wx:if="{{isFirst}}" catchtap="shutAddMyMiniapp">
     <view>点击加入我的小程序 ↑</view>
     <text>了解"{{webSiteName}}"最新文章</text>
+</view>
+<view>
+    <hr-search></hr-search>
 </view>
 <view>
     <!-- 轮播图 -->
@@ -22,15 +25,10 @@
             </swiper>
         </view>
     </view>
-    <view>
-        <hr-wave class="wave" id="wave"></hr-wave>
-    </view>
-
 
     <!-- 标题 -->
     <view class="index-h">
         <font><label class="index-h-blue _span">工</label>具导航</font>
-        <font class="index-h-all">滑动查看</font>
     </view>
 
     <!-- 精选栏目 -->
@@ -70,11 +68,9 @@
         <official-account></official-account>
     </view>
 
-
     <!-- 标题 -->
     <view class="index-h">
         <font v><label class="index-h-blue _span">最</label>新文章</font>
-        <font class="index-h-all">All</font>
     </view>
 
     <!-- 文章列表 -->
@@ -85,17 +81,15 @@
                     <view class="cnet-img-w">
                         <image class="fr-swiper-img" src="{{item.cover}}" binderror="errorImg" data-index="{{index}}" mode="aspectFill"></image>
                     </view>
-
-                    <!-- <view class="cate_meta">{{item.categories[0]&&item.categories[0]['name']}}</view> -->
                     <view class="cent-wz-icon">
                         <text class="index-page-title">{{item.title}}</text>
                         <view class="post-data">
                             <block wx:if="{{item.tags.length > 0}}">
-                                <image src="../../static/images/calendar.png" mode="widthFix"></image>
+                                <image src="/static/images/tag.png" mode="widthFix"></image>
                                 <text wx:for="{{item.tags}}" wx:key="tag"> {{item.name}} </text>
                             </block>
                             <block wx:if="{{item.categories.length > 0}}">
-                                <image src="../../static/images/cate.png" mode="widthFix"></image>
+                                <image src="/static/images/category.png" mode="widthFix"></image>
                                 <text wx:for="{{item.categories}}" wx:key="categories">{{item.name}}</text>
                             </block>
                         </view>
@@ -106,8 +100,6 @@
                 <ad style="transform: none" unit-id="{{isAd.bannerId}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
             </view>
         </view>
-
-        <!-- <template is="tempCommonList" data="{{postsList:postsList,listAdsuccess:listAdsuccess}}" /> -->
         <view style='display:{{isLoading?"block":"none"}}'>
             <template is="tempLoading" />
         </view>
@@ -118,11 +110,10 @@
     </view>
     <!-- 无法访问网络 -->
     <view class="showerror" style="display:{{showerror}}">
-        <image src="../../static/images/cry80.png" style="height:100rpx;width:100rpx"></image>
+        <image src="/static/images/cry80.png" style="height:100rpx;width:100rpx"></image>
         <view class="errortext">
             暂时无法访问网络，下拉重试...
         </view>
     </view>
-
 
 </view>

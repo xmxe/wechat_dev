@@ -3,7 +3,6 @@ function formatFunc(str) {
 }
 
 function timeChage(res) {
-    console.log(res);
     if (!res) {
         return '-';
     }

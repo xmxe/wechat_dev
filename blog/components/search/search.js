@@ -1,9 +1,11 @@
 /**
  * 搜索组件封装
  */
-// components/search/search.js
 const appInst = getApp();
-const {Api,wxRequest} = appInst.globalData
+const {
+    Api,
+    wxRequest
+} = appInst.globalData
 Component({
     /**
      * 组件的属性列表
@@ -11,7 +13,6 @@ Component({
     properties: {
 
     },
-
     /**
      * 组件的初始数据
      */
@@ -44,7 +45,7 @@ Component({
             let data = ''
             switch (con) {
                 case "1":
-                    data = 'https://github.com/Rr210/hexo-wx-api'
+                    data = 'https://github.com/xmxe'
                     break;
                 case "2":
                     data = 'https://creativecommons.org/licenses/by-nc-sa/4.0/'
@@ -60,7 +61,6 @@ Component({
         },
         // input框输入内容
         search_key(e) {
-            // console.log(e);
             let _this = this;
             let value = e.detail.value.trim()
 
@@ -94,7 +94,6 @@ Component({
                         return v
                     }
                 })
-                // console.log(res_list);
                 this.setData({
                     res_list,
                     key: value.trim()
@@ -121,7 +120,7 @@ Component({
                 slug
             } = e.currentTarget.dataset
             wx.navigateTo({
-                url: '/pages/articles/articles?id=' + slug
+                url: `/pages/feature/articles/articles?id=${encodeURIComponent(slug)}`
             });
         }
     },
