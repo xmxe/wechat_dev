@@ -23,6 +23,7 @@ Page({
     // 一言打字机
     hitokoto() {
         wxRequest.getRequest(this.data.url).then(res=>{
+            wx.stopPullDownRefresh();
             let hitokoto = res.data.hitokoto;
             let i = 0;
             clearInterval(timer)

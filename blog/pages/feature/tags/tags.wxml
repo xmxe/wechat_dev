@@ -21,7 +21,8 @@
     <view class="xx_1">
         <view class="mid_2" bindtap="clickImg">
             <view class="mid_1">
-                <open-data class="" type="userAvatarUrl"></open-data>
+                <!-- <open-data class="" type="userAvatarUrl"></open-data> -->
+                <image src="/static/images/author.png" mode="widthFix"></image>
             </view>
         </view>
         <view class="other_w" wx:for="{{currentList}}" wx:for-index="index" wx:for-item="item" wx:key="item" style="width:{{300+index*padd+'rpx'}};height:{{300+index*padd+'rpx'}};animation:{{'planet-rotate '+ (speed+index*2)+'s '+ 'linear ' +((-1)+index*(-roratedelay))+'s '+'infinite'}};z-index:{{pageCount-index-1}}">
