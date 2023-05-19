@@ -31,7 +31,7 @@
 
  -->
 <view>
-  <checkbox checked="{{isChecked}}"> </checkbox>
+    <checkbox checked="{{isChecked}}"> </checkbox>
 </view>
 
 
@@ -78,57 +78,40 @@
       wx:for-item="value"  wx:for-index="key"
 
  -->
- <view>
-   <view 
-  wx:for="{{list}}"
-  wx:for-item="item"
-  wx:for-index="index"
-  wx:key="id"
-   >
-     索引：{{index}}
-     --
-     值:{{item.name}}
-   </view>
- </view>
+<view>
+    <view wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="id">
+        索引：{{index}}
+        --
+        值:{{item.name}}
+    </view>
+</view>
 
- <view>
-   <view>对象循环</view>
-   <view 
-  wx:for="{{person}}"
-  wx:for-item="value"  
-  wx:for-index="key"
-  wx:key="age"
-  >
-     属性:{{key}}
-     --
-     值:{{value}}
-   </view>
- </view>
+<view>
+    <view>对象循环</view>
+    <view wx:for="{{person}}" wx:for-item="value" wx:for-index="key" wx:key="age">
+        属性:{{key}}
+        --
+        值:{{value}}
+    </view>
+</view>
 
- <!-- 
+<!-- 
    10 block
     1 占位符的标签 
     2 写代码的时候 可以看到这标签存在
     3 页面渲染 小程序会把它移除掉
   -->
 
-  <view>
-    <block 
-   wx:for="{{list}}"
-   wx:for-item="item"
-   wx:for-index="index"
-   wx:key="id"
-   class="my_list"
-    >
-      索引：{{index}}
-      --
-      值:{{item.name}}
+<view>
+    <block wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="id" class="my_list">
+        索引：{{index}}
+        --
+        值:{{item.name}}
     </block>
-  </view>
+</view>
 
 
-
-  <!-- 
+<!-- 
     11 条件渲染
       1 wx:if="{{true/false}}"
         1 if , else , if else
@@ -147,20 +130,20 @@
           hidden 属性 不要和 样式 display一起使用
    -->
 
-   <view>
-     <view>条件渲染</view>
-     <view wx:if="{{true}}">显示</view>
-     <view wx:if="{{false}}">隐藏</view>
+<view>
+    <view>条件渲染</view>
+    <view wx:if="{{true}}">显示</view>
+    <view wx:if="{{false}}">隐藏</view>
 
-     <view wx:if="{{flase}}">1</view>
-     <view wx:elif="{{flase}}">2 </view>
-     <view wx:else> 3 </view>
+    <view wx:if="{{flase}}">1</view>
+    <view wx:elif="{{flase}}">2 </view>
+    <view wx:else> 3 </view>
 
-     <view>---------------</view>
-     <view hidden >hidden1</view>
-     <view hidden="{{false}}" >hidden2</view>
+    <view>---------------</view>
+    <view hidden>hidden1</view>
+    <view hidden="{{false}}">hidden2</view>
 
-     <view>-----000-------</view>
-     <view wx:if="{{false}}">wx:if</view>
-     <view hidden  style="display: flex;" >hidden</view>
-   </view>
+    <view>-----000-------</view>
+    <view wx:if="{{false}}">wx:if</view>
+    <view hidden style="display: flex;">hidden</view>
+</view>

@@ -1,58 +1,58 @@
 <!--pages/demo18/demo18.wxml-->
 <navigator url="/pages/demo/demo01/demo01" open-type="navigate">
-  demo01(page.json)
+    demo01(page.json)
 </navigator>
 <navigator url="/pages/demo/demo02/demo02" open-type="navigate">
-  demo02(无)
+    demo02(无)
 </navigator>
 <navigator url="/pages/demo/demo03/demo03" open-type="navigate">
-  demo03(标签赋值、遍历等操作)
+    demo03(标签赋值、遍历等操作)
 </navigator>
 <navigator url="/pages/demo/demo04/demo04" open-type="navigate">
-  demo04(input +-)
+    demo04(input +-)
 </navigator>
 <navigator url="/pages/demo/demo05/demo05" open-type="navigate">
-  demo05(rpx)
+    demo05(rpx)
 </navigator>
 <navigator url="/pages/demo/demo06/demo06" open-type="navigate">
-  demo06(.wxss import)
+    demo06(.wxss import)
 </navigator>
 <navigator url="/pages/demo/demo07/demo07" open-type="navigate">
-  demo07(less文件)
+    demo07(less文件)
 </navigator>
 <navigator url="/pages/demo/demo08/demo08" open-type="navigate">
-  demo08(长按文字复制)
+    demo08(长按文字复制)
 </navigator>
 <navigator url="/pages/demo/demo09/demo09" open-type="navigate">
-  demo09(图片)
+    demo09(图片)
 </navigator>
 <navigator url="/pages/demo/demo10/demo10" open-type="navigate">
-  demo10(图片轮播)
+    demo10(图片轮播)
 </navigator>
 <navigator url="/pages/demo/demo11/demo11" open-type="navigate">
-  demo11(导航组件 navigator)
+    demo11(导航组件 navigator)
 </navigator>
 <navigator url="/pages/demo/demo12/demo12" open-type="navigate">
-  demo12(富文本，标签内容展示html)
+    demo12(富文本，标签内容展示html)
 </navigator>
 <navigator url="/pages/demo/demo13/demo13" open-type="navigate">
-  demo13(button)
+    demo13(button)
 </navigator>
 <navigator url="/pages/demo/demo14/demo14" open-type="navigate">
-  demo14(icon)
+    demo14(icon)
 </navigator>
 <navigator url="/pages/demo/demo15/demo15" open-type="navigate">
-  demo15(单选框radio)
+    demo15(单选框radio)
 </navigator>
 <navigator url="/pages/demo/demo16/demo16" open-type="navigate">
-  demo16(多选框checkbox)
+    demo16(多选框checkbox)
 </navigator>
 
 <navigator url="/pages/demo/demo17/demo17" open-type="navigate">
-  demo17(自定义组件)
+    demo17(自定义组件)
 </navigator>
-  
+
 <navigator url="/pages/demo/demo17/demo17" open-type="redirect">
-  demo17 redirect
+    demo17 redirect
 </navigator>
 <view>1</view>

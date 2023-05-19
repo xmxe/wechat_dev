@@ -2,8 +2,6 @@
     "pages": [
         "pages/index/index",
         "pages/logs/logs",
-        "pages/main/main",
-        "pages/mine/mine",
         "pages/demo/demo18/demo18",
         "pages/demo/demo01/demo01",
         "pages/demo/demo02/demo02",
@@ -34,25 +32,12 @@
         "selectedColor": "@tabBarSelectedColor",
         "borderStyle": "@tabBarBorderStyle",
         "backgroundColor": "@tabBarBackgroundColor",
-        "list": [
-            {
+        "list": [{
                 "pagePath": "pages/index/index",
                 "iconPath": "@iconPathComponent",
                 "selectedIconPath": "@selectedIconPathComponent",
                 "text": "首页"
             },
-            {
-                "pagePath": "pages/main/main",
-                "iconPath": "@iconPathAPI",
-                "selectedIconPath": "@selectedIconPathAPI",
-                "text": "主页面"
-            },
-            {
-                "pagePath": "pages/mine/mine",
-                "iconPath": "@iconPathCloud",
-                "selectedIconPath": "@selectedIconPathCloud",
-                "text": "我的"
-            }, 
             {
                 "pagePath": "pages/demo/demo18/demo18",
                 "iconPath": "@iconPathCloud",

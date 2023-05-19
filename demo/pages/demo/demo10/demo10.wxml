@@ -1,15 +1,15 @@
 <!-- 
-  1 轮播图外层容器 swiper
-  2 每一个轮播项 swiper-item
+  1 轮播图外层容器swiper
+  2 每一个轮播项swiper-item
   3 swiper标签 存在默认样式
     1 width 100%
     2 height 150px    image 存在默认宽度和高度 320 * 240 
     3 swiper 高度 无法实现由内容撑开 
-  4 先找出来 原图的宽度和高度 等比例 给swiper 定 宽度和高度
-    原图的宽度和高度  1125 * 352 px
-    swiper 宽度 / swiper  高度 =  原图的宽度  /  原图的高度
-    swiper  高度  =  swiper 宽度 *  原图的高度 / 原图的宽度
-    height: 100vw * 352 /  1125
+  4 先找出来原图的宽度和高度等比例给swiper定宽度和高度
+    原图的宽度和高度1125 * 352px
+    swiper宽度 / swiper高度 = 原图的宽度 / 原图的高度
+    swiper高度 = swiper宽度 * 原图的高度 / 原图的宽度
+    height: 100vw * 352 / 1125
   5 autoplay 自动轮播
   6 interval 修改轮播时间
   7 circular 衔接轮播
@@ -18,7 +18,13 @@
   10 indicator-active-color 选中的时候的指示器的颜色 
  -->
 <swiper autoplay interval="3000" circular indicator-dots indicator-color="#0094ff" indicator-active-color="#ff0094">
-    <swiper-item> <image mode="widthFix" src="//gw.alicdn.com/imgextra/i1/44/O1CN013zKZP11CCByG5bAeF_!!44-0-lubanu.jpg" /> </swiper-item>
-    <swiper-item> <image mode="widthFix" src="//aecpm.alicdn.com/simba/img/TB1CWf9KpXXXXbuXpXXSutbFXXX.jpg_q50.jpg" /> </swiper-item>
-    <swiper-item> <image mode="widthFix" src="//gw.alicdn.com/imgextra/i2/37/O1CN01syHZxs1C8zCFJj97b_!!37-0-lubanu.jpg" /> </swiper-item>
+    <swiper-item>
+        <image mode="widthFix" src="//gw.alicdn.com/imgextra/i1/44/O1CN013zKZP11CCByG5bAeF_!!44-0-lubanu.jpg" />
+    </swiper-item>
+    <swiper-item>
+        <image mode="widthFix" src="//aecpm.alicdn.com/simba/img/TB1CWf9KpXXXXbuXpXXSutbFXXX.jpg_q50.jpg" />
+    </swiper-item>
+    <swiper-item>
+        <image mode="widthFix" src="//gw.alicdn.com/imgextra/i2/37/O1CN01syHZxs1C8zCFJj97b_!!37-0-lubanu.jpg" />
+    </swiper-item>
 </swiper>

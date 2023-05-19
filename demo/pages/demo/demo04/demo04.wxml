@@ -1,10 +1,10 @@
 <!-- 
-  1 需要给input标签绑定 input事件 
-    绑定关键字 bindinput
-  2 如何获取 输入框的值 
+  1 需要给input标签绑定input事件 
+    绑定关键字bindinput
+  2 如何获取输入框的值 
     通过事件源对象来获取  
     e.detail.value 
-  3 把输入框的值 赋值到 data当中
+  3 把输入框的值赋值到data当中
     不能直接 
       1 this.data.num=e.detail.value 
       2 this.num=e.detail.value 
@@ -19,8 +19,8 @@
       4 事件源中获取 自定义属性
  -->
 <input type="text" bindinput="handleInput" />
-<button bindtap="handletap" data-operation="{{1}}" >+</button>
+<button bindtap="handletap" data-operation="{{1}}">+</button>
 <button bindtap="handletap" data-operation="{{-1}}">-</button>
-<view>  
-  {{num}}
+<view>
+    {{num}}
 </view>
