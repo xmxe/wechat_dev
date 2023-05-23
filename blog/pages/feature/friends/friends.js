@@ -35,53 +35,5 @@ Page({
                 // 打开成功
             }
         })
-    },
-    // 跳转到海报拼图
-    navigateToPinTu: function () {
-        wx.navigateToMiniProgram({
-            appId: 'wxf122306e39be70d7',
-            path: '',
-            extraData: {},
-            envVersion: '',
-            success(res) {
-                // 打开成功
-            }
-        })
-    },
-    // 跳转到薅羊毛神器
-    navigateToHaoYangMao: function () {
-        wx.navigateToMiniProgram({
-            appId: 'wx17ccaeaabf08a338',
-            path: '',
-            extraData: {},
-            envVersion: '',
-            success(res) {
-                // 打开成功
-            }
-        })
-    },
-    // 跳转到五子棋
-    navigateToWuZiQi: function () {
-        wx.navigateToMiniProgram({
-            appId: 'wxe96df2296367e7a1',
-            path: '',
-            extraData: {},
-            envVersion: '',
-            success(res) {
-                // 打开成功
-            }
-        })
-    },
-    // 跳转到传意表情
-    navigateToBiaoQing: function () {
-        wx.navigateToMiniProgram({
-            appId: 'wxca68464e8b3e86c8',
-            path: '',
-            extraData: {},
-            envVersion: '',
-            success(res) {
-                // 打开成功
-            }
-        })
     }
 })

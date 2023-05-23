@@ -15,7 +15,7 @@ Component({
      * 组件的方法列表
      */
     methods: {
-        __hideInfo: function () {
+        hideInfo: function () {
             this.setData({
                 isShowInfo: true
             })

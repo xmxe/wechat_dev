@@ -24,7 +24,7 @@ const INDEXNAV = [{
         // 'image'为图标路径
         image: '/static/icon/index/1.png',
         // 'url'为跳转的页面
-        url: '/pages/feature/categories/categories',
+        url: '/pages/feature/categories/categories?mark=1',
         // redirecttype为跳转的类型
         // miniapp:跳转其他小程序,url为其他小程序的页面
         // apppage:跳转本小程序的页面,url为本小程序的页面路径
@@ -39,7 +39,7 @@ const INDEXNAV = [{
         id: '2',
         name: '标签',
         image: '/static/icon/index/2.png',
-        url: '/pages/feature/tags/tags',
+        url: '/pages/feature/categories/categories?mark=2',
         redirecttype: 'apppage',
         appid: '',
         extraData: ''

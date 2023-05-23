@@ -20,17 +20,25 @@ Page({
         isabout: false, // 控制关于页面的显示与隐藏
         isclickimg: false, // 控制全部分类列表的显示与隐藏
         isflag: false, // 判断用户是否点击了头像框
+        mark: 1 // 指明展示分类页还是标签页 1:分类页 2:标签页
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.getlistcates()
+        const {
+            mark
+        } = options
+        this.setData({
+            mark: mark
+        })
+        this.getlistcates(mark)
     },
-    // 请求分类的列表
-    getlistcates() {
-        wxRequest.getRequest(Api.getCategories())
+    // 请求列表
+    getlistcates(mark) {
+        const url = mark == 1 ? Api.getCategories() : Api.getTags()
+        wxRequest.getRequest(url)
             .then(res => {
                 if (res.statusCode == 200) {
                     this.setData({
@@ -93,14 +101,17 @@ Page({
         }, 500)
         this.flag = true
     },
-    // 分类详情页面的跳转
+    // 详情页面的跳转
     navTo(e) {
         let {
-            name
+            name,
+            path
         } = e.currentTarget.dataset
         if (name) {
+            const mark = this.data.mark
+            const url = mark == 1 ? Api.getCateDetail(name) : Api.getTagDetail(name)
             wx.navigateTo({
-                url: `/pages/feature/category/category?cateName=${name}`
+                url: `/pages/feature/tags/tags?url=${url}&mark=${mark}`
             });
         }
     },

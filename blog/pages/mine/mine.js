@@ -1,7 +1,11 @@
 const appInst = getApp();
-const {wxRequest} = appInst.globalData
+const {
+    wxRequest,
+    Api,
+    hitokoto
+} = appInst.globalData
 /**
- * 个人主页的登录设计
+ * 个人主页
  */
 Page({
 
@@ -10,35 +14,17 @@ Page({
      */
     data: {
         hasUserInfo: false,
-        text:'',
-        url: 'https://v1.hitokoto.cn'
+        text: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.hitokoto()
+        const that = this;
+        hitokoto.hitokoto(that, wxRequest, Api.hitokoto())
     },
-    // 一言打字机
-    hitokoto() {
-        wxRequest.getRequest(this.data.url).then(res=>{
-            wx.stopPullDownRefresh();
-            let hitokoto = res.data.hitokoto;
-            let i = 0;
-            clearInterval(timer)
-            let timer = setInterval(()=>{
-                this.setData({
-                    text: hitokoto.substring(0, i)
-                });
-                i++;
-                if (this.data.text === hitokoto) {
-                    clearInterval(timer)
-                }
-            },150)
-        })
-    },
-    to(e){
+    to(e) {
         let {
             url
         } = e.currentTarget.dataset
@@ -46,14 +32,7 @@ Page({
         //     url: `/pages/feature/webpage/webpage?url=${url}`
         // })
         wx.setClipboardData({
-            data: url,
-            // success(res) {
-            //     wx.showModal({
-            //     title: '提示',
-            //     content: '复制成功',
-            //     showCancel: false
-            //     });
-            // }
+            data: url
         })
     },
     // 登录
@@ -139,7 +118,9 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-        this.hitokoto();
+        const that = this;
+        hitokoto.hitokoto(that, wxRequest, Api.hitokoto());
+        wx.stopPullDownRefresh();
     },
 
     /**

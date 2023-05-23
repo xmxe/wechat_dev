@@ -5,9 +5,7 @@
         "pages/feature/webpage/webpage",
         "pages/feature/articles/articles",
         "pages/feature/categories/categories",
-        "pages/feature/category/category",
         "pages/feature/tags/tags",
-        "pages/feature/tag/tag",
         "pages/feature/friends/friends",
         "pages/feature/search/search"
         

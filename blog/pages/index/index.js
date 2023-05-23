@@ -1,6 +1,3 @@
-// const Api = require('/utils/api.js');
-// const wxRequest = require('/utils/wxRequest.js')
-// import config from '/config/config.js'
 const appInst = getApp();
 const {
     config,
@@ -12,7 +9,7 @@ let {
     getIndexNav: topNav,
     getAd: ad
 } = config;
-// var domain = config.getDomain;
+
 Page({
     data: {
         postsList: [], // 文章列表
@@ -37,24 +34,27 @@ Page({
         indicator_color: "rgba(217, 217, 217, 1)", // 指示点颜色
         indicator_active_color: "#3F91F0", // 指示点选中颜色
     },
+    /**
+     * 用户点击右上角分享
+     */
     onShareAppMessage: function () {
         return {
             title: `${webSiteName}`,
-            path: 'pages/index/index',
-            success: function (res) {
-                // 转发成功
-            },
-            fail: function (res) {
-                // 转发失败
-            }
+            path: 'pages/index/index'
         }
     },
+    /**
+     * 分享到朋友圈
+     */
     onShareTimeline() {
         return {
             title: `${webSiteName}`,
             imageUrl: '/static/images/logo-icon.png'
         }
     },
+    /**
+     * 下拉刷新
+     */
     onPullDownRefresh: function () {
         let self = this;
         self.setData({
@@ -72,6 +72,9 @@ Page({
         this.fetchTopFivePosts();
         this.fetchPostsData();
     },
+    /**
+     * 监听用户上拉触底事件
+     */
     onReachBottom: function () {
         let self = this;
         if (!self.data.isLastPage && this.data.page < this.data.pageCounts) {
@@ -91,7 +94,9 @@ Page({
     },
     onLoad: function (options) {
         let self = this;
+        // 滚动图信息
         self.fetchTopFivePosts();
+        // 文章信息
         self.fetchPostsData();
         self.setData({
             isFirst: true
@@ -103,6 +108,9 @@ Page({
             });
         }, 5000)
     },
+    /**
+     * 获取首页滚动图信息
+     */
     fetchTopFivePosts: function () {
         let self = this;
         // 获取滑动图片的文章
@@ -125,7 +133,9 @@ Page({
                 });
             }).final(function () {});;
     },
-    // 跳转至查看小程序列表页面或文章详情页
+    /**
+     * 跳转至查看小程序列表页面或文章详情页
+     */
     redictAppDetail: function (e) {
         let {
             url
@@ -134,14 +144,15 @@ Page({
             wx.navigateTo({
                 url: `/pages/feature/articles/articles?id=${encodeURIComponent(url)}`,
                 success: (result) => {
-
                 },
                 fail: () => {},
                 complete: () => {}
             });
         }
     },
-    // 获取文章的数据信息
+    /**
+     * 获取文章的数据信息
+     */
     fetchPostsData(e) {
         let page = this.data.page
         // 请求数据
@@ -168,7 +179,9 @@ Page({
                 })
             });
     },
-    // 图片加载失败后问题
+    /**
+     * 图片加载失败后问题
+     */
     errorImg(e) {
         let {
             index
@@ -179,8 +192,9 @@ Page({
             postsList: errlist
         })
     },
-
-    // 首页工具导航图标跳转
+    /**
+     * 首页工具导航图标跳转
+     */
     onNavRedirect: function (e) {
         var redicttype = e.currentTarget.dataset.redicttype;
         var url = e.currentTarget.dataset.url == null ? '' : e.currentTarget.dataset.url;
@@ -210,7 +224,7 @@ Page({
                     // 打开成功
                 },
                 fail: function (res) {
-                    console.log(res);
+                    
                 }
             })
         }

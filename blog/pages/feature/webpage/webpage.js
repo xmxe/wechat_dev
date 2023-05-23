@@ -3,7 +3,8 @@ Page({
         url: ''
     },
     onLoad: function (options) {
-        let fromPath = decodeURIComponent(options.url);
+        const { url } = options
+        let fromPath = decodeURIComponent(url);
         this.setData({
             url: fromPath
         })

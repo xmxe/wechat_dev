@@ -2,7 +2,7 @@
     <view class="hd_w">
         <view class="img_w">
             <view class="img_w_1">
-                <image mode="widthFix" class="" src="{{!isLogin?'/static/images/gravatar.png':hasUserInfo.avatarUrl}}">
+                <image mode="widthFix" class="" src="{{!isLogin?'/static/images/robot.png':hasUserInfo.avatarUrl}}">
                 </image>
             </view>
             <view>
@@ -20,12 +20,10 @@
     <view class="mid_w_share">
         <view class="mid_item">
             <image class="" mode="widthFix" src="/static/icon/main/ewm.png"></image>
-            <!-- <view class="text_">分享海报</view> -->
         </view>
         <view class="mid_item">
             <image class="" src="/static/icon/main/kf.png" mode="widthFix"></image>
-            <!-- <view class="text_">联系我</view>
-            <button class="contact" open-type="contact"></button> -->
+            <!-- <button class="contact" open-type="contact"></button> -->
         </view>
     </view>
     <!-- 底部设计开始 -->

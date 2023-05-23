@@ -1,121 +1,77 @@
+/**
+ * 类别详情页
+ */
 const appInst = getApp();
 const {
+    config,
     Api,
-    wxRequest
+    wxRequest,
+    hitokoto
 } = appInst.globalData
+let {
+    getAd: ad
+} = config
 Page({
+
     /**
      * 页面的初始数据
      */
     data: {
-        listCates: [],
-        page: 1,
-        pageCount: 0,
-        currentList: [],
-        padd: 120, // 星球间距
-        numc: 5, // 控制单个页面星球的数量
-        speed: 9, // 旋转的速度
-        ballsize: 70, // 初始化小球的大小
-        roratedelay: 5, // 旋转进入页面的延迟倍数
-        isabout: false, // 控制关于页面的显示与隐藏
-        isclickimg: false, // 控制全部分类列表的显示与隐藏
-        isflag: false, // 判断用户是否点击了头像框
+        title: '',
+        dataList: [],
+        isAd: ad,
+        text: '',
+        label: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.getlistcates()
+        let {
+            url,
+            mark
+        } = options
+        if (url) {
+            this.getcates(url)
+            this.setData({
+                label: mark == 1 ? '分类' : '标签'
+            })
+        }
+        const that = this
+        hitokoto.hitokoto(that, wxRequest, Api.hitokoto())
     },
-    // 请求分类的列表
-    getlistcates() {
-        wxRequest.getRequest(Api.getTags())
+    // 获取到某个分类/标签的文章信息
+    getcates(url) {
+        wxRequest.getRequest(url)
             .then(res => {
                 if (res.statusCode == 200) {
                     this.setData({
-                        pageCount: Math.ceil(res.data.length / this.data.numc),
-                        listCates: res.data
+                        title: res.data.name,
+                        dataList: res.data.postlist
                     })
-                    this.getsliceList(this.data.page)
                 }
             })
     },
-    // 请求当前页面列表
-    getsliceList(page) {
-        let news = [...this.data.listCates]
-        if (news.length !== 0) {
-            let currentList = news.splice((page - 1) * this.data.numc, this.data.numc)
-            this.setData({
-                currentList
-            })
-        }
-    },
-    flag: false,
-    // 上下页面切换
-    next() {
-        if (this.flag) return
-        setTimeout(() => {
-            if (this.data.page < this.data.pageCount) {
-                let page = ++this.data.page;
-                this.setData({
-                    page
-                })
-                this.getsliceList(page)
-            } else {
-                wx.showToast({
-                    title: '已到达最后一页',
-                    icon: 'none',
-                    duration: 1500
-                });
-            }
-            this.flag = false
-        }, 300)
-        this.flag = true
-    },
-    pre() {
-        if (this.flag) return
-        setTimeout(() => {
-            if (this.data.page > 1) {
-                let page = --this.data.page;
-                this.setData({
-                    page
-                })
-                this.getsliceList(page)
-            } else {
-                wx.showToast({
-                    title: '当前页面为第一页',
-                    icon: 'none',
-                    duration: 1500
-                });
-            }
-            this.flag = false
-        }, 500)
-        this.flag = true
-    },
-    // 分类详情页面的跳转
-    navTo(e) {
+    // 图片加载失败
+    imgerror(e) {
         let {
-            name
+            index
         } = e.currentTarget.dataset
-        if (name) {
-            wx.navigateTo({
-                url: `/pages/feature/tag/tag?cateName=${name}`
-            });
-        }
-    },
-    // 关于页面的弹窗
-    remindModuel() {
+        let dataList = this.data.dataList
+        dataList[index].cover = '/static/images/default_404_img.png'
         this.setData({
-            isabout: !this.data.isabout
+            dataList
         })
     },
-    // 点击头像的事件
-    clickImg() {
-        this.setData({
-            isclickimg: !this.data.isclickimg,
-            isflag: true
-        })
+    // 页面的跳转
+    nav_page(e) {
+        let {
+            slug
+        } = e.currentTarget.dataset
+        wx.navigateTo({
+            url: `/pages/feature/articles/articles?id=${encodeURIComponent(slug)}`
+        });
     },
 
     /**

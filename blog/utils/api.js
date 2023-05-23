@@ -33,7 +33,12 @@ module.exports = {
     getTagDetail(TagName) {
         return Domain + `/api/tags/${TagName}.json`
     },
+    // 获取搜索JSON数据
     getJsonSearch() {
         return Domain + '/api/search.json'
+    },
+    // 获取一言JSON数据
+    hitokoto() {
+        return 'https://v1.hitokoto.cn'
     }
 }
