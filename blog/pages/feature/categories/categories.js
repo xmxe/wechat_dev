@@ -35,7 +35,7 @@ Page({
         })
         this.getlistcates(mark)
     },
-    // 请求列表
+    /** 请求列表 */
     getlistcates(mark) {
         const url = mark == 1 ? Api.getCategories() : Api.getTags()
         wxRequest.getRequest(url)
@@ -49,7 +49,7 @@ Page({
                 }
             })
     },
-    // 请求当前页面列表
+    /** 请求当前页面列表 */
     getsliceList(page) {
         let news = [...this.data.listCates]
         if (news.length !== 0) {
@@ -60,7 +60,7 @@ Page({
         }
     },
     flag: false,
-    // 上下页面切换
+    /** 上下页面切换 */
     next() {
         if (this.flag) return
         setTimeout(() => {
@@ -101,7 +101,7 @@ Page({
         }, 500)
         this.flag = true
     },
-    // 详情页面的跳转
+    /** 详情页面的跳转 */
     navTo(e) {
         let {
             name,
@@ -111,17 +111,17 @@ Page({
             const mark = this.data.mark
             const url = mark == 1 ? Api.getCateDetail(name) : Api.getTagDetail(name)
             wx.navigateTo({
-                url: `/pages/feature/tags/tags?url=${url}&mark=${mark}`
+                url: `/pages/feature/tags/tags?url=${encodeURIComponent(url)}&mark=${mark}`
             });
         }
     },
-    // 关于页面的弹窗
+    /** 关于页面的弹窗 */
     remindModuel() {
         this.setData({
             isabout: !this.data.isabout
         })
     },
-    // 点击头像的事件
+    /** 点击头像的事件 */
     clickImg() {
         this.setData({
             isclickimg: !this.data.isclickimg,

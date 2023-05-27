@@ -1,1 +1,6 @@
-<web-view src="{{url}}"></web-view>
+<!-- <web-view src="{{url}}"></web-view> -->
+<view class="animated slow bounceInDown wv">
+    <text decode='true'>
+        个人主体性质的小程序不允许通过&lt;web-view&gt;组件打开网页,点击<text bindtap="copy" class="copy">《{{text}}》</text>复制网址后在浏览器打开
+    </text>
+</view>

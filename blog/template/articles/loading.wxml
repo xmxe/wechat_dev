@@ -1,0 +1,7 @@
+<template name="loading">
+    <view class="loader">
+        <view class="loader-outter"></view>
+        <view class="loader-inner"></view>
+        <view class="tip">加载中...</view>
+    </view>
+</template>

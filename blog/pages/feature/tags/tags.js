@@ -6,7 +6,7 @@ const {
     config,
     Api,
     wxRequest,
-    hitokoto
+    util
 } = appInst.globalData
 let {
     getAd: ad
@@ -33,15 +33,17 @@ Page({
             mark
         } = options
         if (url) {
-            this.getcates(url)
+            this.getcates(decodeURIComponent(url))
             this.setData({
                 label: mark == 1 ? '分类' : '标签'
             })
         }
         const that = this
-        hitokoto.hitokoto(that, wxRequest, Api.hitokoto())
+        util.hitokoto(that, wxRequest, Api.hitokoto())
     },
-    // 获取到某个分类/标签的文章信息
+    /**
+     * 获取到某个分类/标签的文章信息
+     */
     getcates(url) {
         wxRequest.getRequest(url)
             .then(res => {
@@ -53,7 +55,7 @@ Page({
                 }
             })
     },
-    // 图片加载失败
+    /** 图片加载失败 */
     imgerror(e) {
         let {
             index
@@ -64,7 +66,7 @@ Page({
             dataList
         })
     },
-    // 页面的跳转
+    /** 页面的跳转 */
     nav_page(e) {
         let {
             slug

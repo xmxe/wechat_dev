@@ -1,10 +1,9 @@
 <!--首页-->
-
-<import src="/template/loading.wxml" />
-<wxs src="/template/dates.wxs" module="tools"></wxs>
+<!-- <wxs src="/template/dates.wxs" module="tools"></wxs> -->
+<import src="/template/index/loading.wxml" />
 <!-- 首次进入引导添加到“我的小程序” -->
 <view class="addMyMiniapp" wx:if="{{isFirst}}" catchtap="shutAddMyMiniapp">
-    <view>点击加入我的小程序 ↑</view>
+    <view>点击加入我的小程序↑</view>
     <text>了解"{{webSiteName}}"最新文章</text>
 </view>
 <view>
@@ -43,7 +42,7 @@
                                 <image class="fr-gju-img" src="{{item.image}}"></image>
                             </view>
                             <view>
-                                <text>{{item.name}}</text>
+                                <text class="animated slow bounceInLeft">{{item.name}}</text>
                             </view>
                         </view>
                     </view>
@@ -82,7 +81,7 @@
                         <image class="fr-swiper-img" src="{{item.cover}}" binderror="errorImg" data-index="{{index}}" mode="aspectFill"></image>
                     </view>
                     <view class="cent-wz-icon">
-                        <text class="index-page-title">{{item.title}}</text>
+                        <text class="index-page-title animated slow jello">{{item.title}}</text>
                         <view class="post-data">
                             <block wx:if="{{item.tags.length > 0}}">
                                 <image src="/static/images/tag.png" mode="widthFix"></image>

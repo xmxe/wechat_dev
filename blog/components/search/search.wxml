@@ -28,5 +28,5 @@
         <image class="img_no_res" style="width:200rpx;margin:0 auto;display:block" src="/static/images/search_404.png" mode="widthFix"></image>
         <view class="" style="text-align:center;color:#888;font-size:24rpx">暂时没有搜索到</view>
     </block>
-    <view class="footer_w" bindtap="Nav_a" data-con="1">©xmxe</view>
+    <view class="footer_w">©xmxe</view>
 </view>

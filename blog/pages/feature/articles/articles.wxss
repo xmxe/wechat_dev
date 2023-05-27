@@ -1,3 +1,4 @@
+@import '/template/articles/loading.wxss';
 /*
  * 文章详情页美化
  */
@@ -62,25 +63,6 @@ page {
     border-radius: 4rpx;
     background: var(--articeTag);
     color: var(--articleThemeColor);
-}
-
-.loding_w {
-    position: relative;
-    margin: 0 auto;
-    margin-top: calc(50vh - 234rpx);
-    width: 568rpx;
-    height: 468rpx;
-    background: url(https://cdn.jsdelivr.net/gh/Rr210/image@master/hexo/api/xiaodianshi2_l.gif) no-repeat;
-    background-size: 100% 100%;
-}
-
-.loding_w::after {
-    content: '正在拼命加载中~_~';
-    position: absolute;
-    bottom: -20rpx;
-    width: 277rpx;
-    height: 40rpx;
-    left: calc(50% - 150rpx);
 }
 
 .footer_copyright {

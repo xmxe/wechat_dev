@@ -2,7 +2,7 @@ const appInst = getApp();
 const {
     wxRequest,
     Api,
-    hitokoto
+    util
 } = appInst.globalData
 /**
  * 个人主页
@@ -22,20 +22,18 @@ Page({
      */
     onLoad: function (options) {
         const that = this;
-        hitokoto.hitokoto(that, wxRequest, Api.hitokoto())
+        util.hitokoto(that, wxRequest, Api.hitokoto())
     },
     to(e) {
         let {
             url
         } = e.currentTarget.dataset
         // wx.navigateTo({
-        //     url: `/pages/feature/webpage/webpage?url=${url}`
+        //     url: `/pages/feature/webpage/webpage?url=${encodeURIComponent(url)}`
         // })
-        wx.setClipboardData({
-            data: url
-        })
+        util.clipboard(url)
     },
-    // 登录
+    /** 登录 */
     getUserProfile(e) {
         // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
         // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -60,7 +58,7 @@ Page({
             hasUserInfo: !this.data.hasUserInfo
         })
     },
-    // 退出登录
+    /** 退出登录 */
     closeF() {
         wx.clearStorage();
         wx.switchTab({
@@ -74,14 +72,6 @@ Page({
             }
         });
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
     /**
      * 生命周期函数--监听页面显示
      */
@@ -101,6 +91,22 @@ Page({
     },
 
     /**
+     * 下拉刷新
+     */
+    onPullDownRefresh: function () {
+        const that = this;
+        util.hitokoto(that, wxRequest, Api.hitokoto());
+        wx.stopPullDownRefresh();
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+
+    },
+
+    /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
@@ -112,15 +118,6 @@ Page({
      */
     onUnload: function () {
 
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-        const that = this;
-        hitokoto.hitokoto(that, wxRequest, Api.hitokoto());
-        wx.stopPullDownRefresh();
     },
 
     /**

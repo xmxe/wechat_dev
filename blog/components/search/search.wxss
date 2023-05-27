@@ -139,7 +139,6 @@
     right: 8rpx;
     font-size: 24rpx;
     text-decoration: underline;
-    color: #142b5c;
 }
 
 .hightLight {

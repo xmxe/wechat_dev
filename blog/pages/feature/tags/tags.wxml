@@ -1,5 +1,5 @@
 <!--分类列表页信息-->
-<wxs src="/template/dates.wxs" module="tools"></wxs>
+<!-- <wxs src="/template/dates.wxs" module="tools"></wxs> -->
 <view class="categories_w">
     <view class="cate_hd_w">
         <view class="tag_w_">

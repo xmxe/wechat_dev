@@ -38,23 +38,6 @@ Component({
                 classStyle: !this.data.classStyle
             })
         },
-        Nav_a(e) {
-            let {
-                con
-            } = e.currentTarget.dataset
-            let data = ''
-            switch (con) {
-                case "1":
-                    data = 'https://github.com/xmxe'
-                    break;
-                case "2":
-                    data = 'https://creativecommons.org/licenses/by-nc-sa/4.0/'
-            }
-            // 设置剪切板的内容
-            wx.setClipboardData({
-                data
-            })
-        },
         // 关键词切割
         getInf(str, key) {
             return str.replace(new RegExp(`${key}`, 'g'), `%%${key}%%`).split('%%')

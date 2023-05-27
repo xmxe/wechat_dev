@@ -4,16 +4,17 @@ const {
     Api,
     wxRequest
 } = appInst.globalData
-
+const towxml = require('../../../components/towxml/index')
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        isLoding: false,
+        isLoding: true,
         htmlText: '',
-        author_d: {}
+        author_d: {},
+        article: {}
     },
 
     /**
@@ -24,7 +25,7 @@ Page({
             id
         } = options
         if (options !== null) {
-            this.getDetail(id)
+            this.getDetail(decodeURIComponent(id))
         }
     },
     // 进入页面后进行请求
@@ -33,7 +34,30 @@ Page({
         wxRequest.getRequest(Api.getArticleDetail(e))
             .then(res => {
                 if (res.statusCode == 200) {
+                    let result = towxml(`${res.data.content}`, 'markdown', {
+                        // 相对资源的base路径
+                        // base:'https://xxx.com',
+                        // 主题，默认`light`
+                        // theme:'dark',
+                        // 为元素绑定的事件方法
+                        events: {
+                            tap: (e) => {
+                                
+                                const event = {
+                                    detail: {
+                                        src: e.currentTarget.dataset.data.attrs.href,
+                                        text: e.currentTarget.dataset.data.children[0].text
+                                    }
+                                }
+                                if (event.detail.src) {
+                                    _this.wxmlTagATap(event)
+                                }
+                            }
+                        }
+                    });
+                    // 更新解析数据
                     _this.setData({
+                        article: result,
                         htmlText: res.data,
                         author_d: {
                             name: config.getAuthorname,
@@ -41,35 +65,32 @@ Page({
                             domain: config.getDomain,
                             webname: config.getWebsiteName
                         },
-                        isLoding: true
+                        isLoding: false
                     })
                 }
             })
     },
+    /*
+     * a标签事件
+     */
     wxmlTagATap(e) {
         wx.navigateTo({
-            url: `/pages/feature/webpage/webpage?url=${e.detail.src}`
+            url: `/pages/feature/webpage/webpage?url=${encodeURIComponent(e.detail.src)}&text=${encodeURIComponent(e.detail.text)}`
         })
     },
-    // 点击复制链接到剪切板
-    Nav_a(e) {
+    /** 详情页面的跳转 */
+    navTo(e) {
         let {
-            con
+            name,
+            mark
         } = e.currentTarget.dataset
-        let data = ''
-        switch (con) {
-            case "1":
-                data = config.getDomain
-                break;
-            case "2":
-                data = 'https://github.com/xmxe'
+        if (name) {
+            const url = mark == 1 ? Api.getCateDetail(name) : Api.getTagDetail(name)
+            wx.navigateTo({
+                url: `/pages/feature/tags/tags?url=${encodeURIComponent(url)}&mark=${mark}`
+            });
         }
-        // 设置剪切板的内容
-        wx.setClipboardData({
-            data
-        })
     },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

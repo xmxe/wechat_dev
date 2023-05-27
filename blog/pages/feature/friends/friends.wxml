@@ -1,18 +1,8 @@
-<view class="bar">
-    <view class='moreBarText'>↓</view>
+<view>
     <scroll-view class='moreBar' scroll-x>
         <view class='moreApp'>
-            <image src='/static/images/copy.png' bindtap='navigateToXiaoZhu' />
-            <view class='moreAppText'>小猪冒险</view>
-        </view>
-        <view class='moreApp'>
-            <image src='/static/images/copy.png' bindtap='navigateToWenZiBao' />
-            <view class='moreAppText'>文字宝</view>
-        </view>
-
-        <view class='moreApp'>
-            <image src='/static/images/copy.png' bindtap='navigateToJieQi' />
-            <view class='moreAppText'>24节气</view>
+            <image src='https://picx.zhimg.com/v2-d40103e323d411af13b8ec4324b6e04d_1440w.jpg' bindtap='navigateTo' data-appid="wx7c8d593b2c3a7703" />
+            <view class='moreAppText'>跳一跳</view>
         </view>
     </scroll-view>
 </view>

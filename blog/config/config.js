@@ -53,15 +53,15 @@ const INDEXNAV = [{
         appid: '',
         extraData: ''
     },
-    // {
-    //     id: '4',
-    //     name: '友链',
-    //     image: '/static/icon/index/4.png',
-    //     url: '/pages/feature/friends/friends',
-    //     redirecttype: 'apppage',
-    //     appid: '',
-    //     extraData: ''
-    // }
+    {
+        id: '4',
+        name: '友链',
+        image: '/static/icon/index/4.png',
+        url: '/pages/feature/friends/friends',
+        redirecttype: 'apppage',
+        appid: '',
+        extraData: ''
+    }
 ];
 
 export default {

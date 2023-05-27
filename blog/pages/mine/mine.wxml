@@ -19,10 +19,10 @@
     <!-- 中部设计开始 -->
     <view class="mid_w_share">
         <view class="mid_item">
-            <image class="" mode="widthFix" src="/static/icon/main/ewm.png"></image>
+            <image class="animated zoomIn" mode="widthFix" src="/static/icon/main/ewm.png"></image>
         </view>
         <view class="mid_item">
-            <image class="" src="/static/icon/main/kf.png" mode="widthFix"></image>
+            <image class="animated zoomIn" src="/static/icon/main/kf.png" mode="widthFix"></image>
             <!-- <button class="contact" open-type="contact"></button> -->
         </view>
     </view>
@@ -30,22 +30,22 @@
     <view class="function_w">
         <view class="item_f" bindtap="to" data-url="https://xmxe.gitee.io/blog">
             <view class="icon_i">
-                <image class="" src="/static/icon/mine/blog.png" mode="widthFix"></image>
+                <image class="animated zoomIn" src="/static/icon/mine/blog.png" mode="widthFix"></image>
             </view>
-            <view class="title_w">博客</view>
+            <view class="title_w animated zoomIn">博客</view>
         </view>
         <view class="item_f" bindtap="to" data-url="https://github.com/xmxe">
             <!-- <button class="feed" open-type="feedback"></button> -->
             <view class="icon_i">
-                <image class="" src="/static/icon/mine/github.png" mode="widthFix"></image>
+                <image class="animated zoomIn" src="/static/icon/mine/github.png" mode="widthFix"></image>
             </view>
-            <view class="title_w">GitHub</view>
+            <view class="title_w animated zoomIn">GitHub</view>
         </view>
         <view class="item_f" bindtap="to" data-url="https://gitee.com/xmxe">
             <view class="icon_i">
-                <image class="" src="/static/icon/mine/gitee.png" mode="widthFix"></image>
+                <image class="animated zoomIn" src="/static/icon/mine/gitee.png" mode="widthFix"></image>
             </view>
-            <view class="title_w">Gitee</view>
+            <view class="title_w animated zoomIn">Gitee</view>
         </view>
         <!-- <view class="item_f" bindtap="closeF">
             <view class="icon_i">

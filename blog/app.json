@@ -8,7 +8,6 @@
         "pages/feature/tags/tags",
         "pages/feature/friends/friends",
         "pages/feature/search/search"
-        
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -27,7 +26,7 @@
                 "selectedIconPath": "static/icon/tabar/home_h.png",
                 "text": "首页"
             },
-            
+
             {
                 "pagePath": "pages/mine/mine",
                 "iconPath": "static/icon/tabar/my.png",
@@ -38,10 +37,5 @@
     },
     "style": "v2",
     "sitemapLocation": "sitemap.json",
-    "plugins": {
-        "htmltowxml": {
-            "version": "1.4.0",
-            "provider": "wxa51b9c855ae38f3c"
-        }
-    }
+    "plugins": {}
 }

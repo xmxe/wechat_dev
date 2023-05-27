@@ -1,6 +1,5 @@
-/*
- * 首页样式
- */
+@import '/template/index/loading.wxss';
+
 /* 文章列表 */
 .cent-wz-icon {
     display: -webkit-box;
@@ -245,7 +244,4 @@
 .index-page-title {
     position: absolute;
     left: 5rpx;
-    background: -webkit-linear-gradient(rgb(36, 15, 15), #333);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }

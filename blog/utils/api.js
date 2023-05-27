@@ -2,7 +2,7 @@
  * 网站的请求接口
  */
 import config from "../config/config";
-let Domain = 'https://' + config.getDomain;  // 请求地址
+let Domain = 'https://' + config.getDomain; // 请求地址
 // let Domain = 'http://localhost:4000/blog'
 module.exports = {
     // 获取文章的列表,参数介绍page

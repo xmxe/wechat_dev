@@ -1,12 +1,22 @@
 Page({
     data: {
-        url: ''
+        url: '',
+        text: ''
     },
     onLoad: function (options) {
-        const { url } = options
-        let fromPath = decodeURIComponent(url);
+        const {
+            url,
+            text
+        } = options
         this.setData({
-            url: fromPath
+            url: decodeURIComponent(url),
+            text: decodeURIComponent(text)
         })
     },
+    /** 复制到剪切板 */
+    copy() {
+        wx.setClipboardData({
+            data: this.data.url
+        })
+    }
 })

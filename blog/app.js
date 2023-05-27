@@ -1,7 +1,7 @@
 // CommonJS(module.exports)
 const Api = require('./utils/api.js');
 const wxRequest = require('./utils/wxRequest.js')
-const hitokoto = require('./utils/hitokoto.js')
+const util = require('./utils/util.js')
 // ES6(export default)
 import config from './config/config.js'
 App({
@@ -11,6 +11,6 @@ App({
         Api,
         wxRequest,
         config,
-        hitokoto
+        util
     }
 })

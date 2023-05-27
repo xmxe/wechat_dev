@@ -48,8 +48,8 @@ Page({
      */
     onShareTimeline() {
         return {
-            title: `${webSiteName}`,
-            imageUrl: '/static/images/logo-icon.png'
+            title: `${webSiteName}的博客`,
+            imageUrl: '/static/images/author.png'
         }
     },
     /**
@@ -143,8 +143,7 @@ Page({
         if (url) {
             wx.navigateTo({
                 url: `/pages/feature/articles/articles?id=${encodeURIComponent(url)}`,
-                success: (result) => {
-                },
+                success: (result) => {},
                 fail: () => {},
                 complete: () => {}
             });
@@ -208,7 +207,7 @@ Page({
         }
         // 跳转到web-view内嵌的页面 
         else if (redicttype == 'webpage') {
-            url = `/pages/feature/webpage/webpage?url=${url}`;
+            url = `/pages/feature/webpage/webpage?url=${encodeURIComponent(url)}&text=${encodeURIComponent(url)}`;
             wx.navigateTo({
                 url: url
             })
@@ -224,7 +223,7 @@ Page({
                     // 打开成功
                 },
                 fail: function (res) {
-                    
+
                 }
             })
         }
