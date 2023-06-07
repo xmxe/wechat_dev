@@ -1,0 +1,83 @@
+page {
+    background: linear-gradient(-45deg, #ac7399, #a8a38e, #b6c24a);
+    background-size: 500% 500%;
+    animation: moiveAnimation 7s infinite;
+}
+
+@keyframes moiveAnimation {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+.top {
+    position: relative;
+    height: 500rpx;
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+}
+
+.avatar {
+    background: url(https://pic4.zhimg.com/v2-5fa695e7fd876d5d15725646ab98ef97_r.jpg);
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 300rpx;
+    background-size: 100% 100%;
+}
+
+.text {
+    position: absolute;
+    bottom: 40rpx;
+    width: 80%;
+    text-align: center;
+    color: rgb(25, 25, 51);
+}
+
+.social-link {
+    height: 500rpx;
+}
+
+.table {
+    width: 60%;
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    overflow-x: auto;
+    word-break: keep-all;
+}
+
+.tr {
+    display: table-row;
+}
+
+.th {
+    display: table-cell;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.td {
+    display: table-cell;
+    height: 60rpx;
+    vertical-align: middle;
+    text-align: center;
+}
+
+image {
+    width: 70rpx;
+    height: 70rpx;
+}

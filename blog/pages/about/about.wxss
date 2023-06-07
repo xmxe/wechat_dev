@@ -1,0 +1,136 @@
+page {
+    height: 100%;
+    background-color: rgb(235, 234, 234);
+}
+
+.top {
+    height: 50%;
+    background: url('https://pic3.zhimg.com/v2-27e8f29e6eb257f6f65df007c6966f12_r.jpg') no-repeat;
+    background-size: 100% 100%;
+}
+
+.pic {
+    position: relative;
+    top: 13%;
+    text-align: center;
+}
+
+.avatar {
+    position: relative;
+    top: 10%;
+    left: 40%;
+    width: 150rpx;
+    height: 150rpx;
+    border: 1rpx solid black;
+    border-radius: 300rpx;
+    background: url('https://pic4.zhimg.com/v2-5fa695e7fd876d5d15725646ab98ef97_r.jpg') no-repeat;
+    background-size: 100% 100%;
+}
+
+.text {
+    position: relative;
+    font-size: 30rpx;
+    color: #fff;
+    width: 70%;
+    left: 15%;
+    top: 30rpx;
+}
+
+.table-box {
+    height: 13%;
+    background-color: #fff;
+}
+
+.table {
+    width: 90%;
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    overflow-x: auto;
+    word-break: keep-all;
+}
+
+.tr {
+    display: table-row;
+}
+
+.th {
+    display: table-cell;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.th:nth-child(1) {
+    color: rgb(83, 83, 158);
+}
+
+.th:nth-child(2) {
+    color: rgb(57, 211, 103);
+}
+
+.th:nth-child(3) {
+    color: rgb(159, 189, 52);
+}
+
+.td {
+    display: table-cell;
+    height: 60rpx;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.list {
+    position: relative;
+    left: 5%;
+    width: 90%;
+    height: 31%;
+    top: 30rpx;
+}
+
+.content:first-child {
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+}
+
+.content:last-child {
+    border-bottom-left-radius: 20rpx;
+    border-bottom-right-radius: 20rpx;
+}
+
+.content {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    /* flex布局 */
+    align-items: center;
+    /* 垂直居中 */
+    background-color: #fff;
+    margin-bottom: 3rpx;
+    /* box-shadow: 2rpx 2rpx 4rpx rgb(197, 193, 193); */
+
+}
+
+
+.content image {
+    width: 50rpx;
+    height: 50rpx;
+    margin-left: 25rpx;
+}
+
+.content text {
+    padding-left: 30rpx;
+}
+
+.triangle {
+    border-top: 20rpx solid transparent;
+    /* 等腰三角形上方空白部分 */
+    border-right: 20rpx solid rgb(110, 91, 91);
+    /* 等腰三角形右方红色部分 */
+    transform: rotate(317deg);
+    /* 绕中心点旋转45度 */
+    position: absolute;
+    right: 20rpx;
+}

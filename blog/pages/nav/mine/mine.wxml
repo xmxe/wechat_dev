@@ -1,0 +1,21 @@
+<view class="top">
+    <view class="avatar"></view>
+    <text class="text">{{text}}</text>
+</view>
+
+<view class="social-link">
+    <view class="table">
+        <!-- 表格标题 -->
+        <view class="tr">
+            <view class="th" bindtap="copy" data-url="{{item.url}}" wx:key="id" wx:for="{{social_link}}" wx:for-item="item" wx:for-index="index">
+                <image src="{{item.icon}}"></image>
+            </view>
+        </view>
+        <!-- 表格内容 -->
+        <view class="tr">
+            <view class="td animated bounceInDown" wx:key="id" wx:for="{{social_link}}" wx:for-item="item" wx:for-index="index">
+                <text>{{item.text}}</text>
+            </view>
+        </view>
+    </view>
+</view>

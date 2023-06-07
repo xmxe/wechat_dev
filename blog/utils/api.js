@@ -2,8 +2,8 @@
  * 网站的请求接口
  */
 import config from "../config/config";
-let Domain = 'https://' + config.getDomain; // 请求地址
-// let Domain = 'http://localhost:4000/blog'
+// 请求地址
+let Domain = config.getDomain;
 module.exports = {
     // 获取文章的列表,参数介绍page
     getPostList(page) {
@@ -36,6 +36,10 @@ module.exports = {
     // 获取搜索JSON数据
     getJsonSearch() {
         return Domain + '/api/search.json'
+    },
+    // 获取博客文章数据信息
+    getPosts() {
+        return Domain + '/api/posts.json'
     },
     // 获取一言JSON数据
     hitokoto() {

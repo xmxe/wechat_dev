@@ -7,19 +7,21 @@ const {
 let {
     getWebsiteName: webSiteName,
     getIndexNav: topNav,
-    getAd: ad
+    getAd: ad,
+    getSwiper: swiper,
+    getStaticImage: staticImage
 } = config;
 
 Page({
     data: {
         postsList: [], // 文章列表
-        postsShowSwiperList: [], // 轮播i图列表
+        swiperList: swiper, // 轮播图列表
         isLastPage: false,
         page: 1, // 请求页数
         pageCounts: 0, // 总的页数
         showerror: "none", // 网络加载失败问题
         showallDisplay: "block",
-        displaySwiper: "none",
+        displaySwiper: "block",
         floatDisplay: "none", // 底部文章的提示
         topNav: topNav, // 导航栏配置
         webSiteName: webSiteName, // 网站的名称
@@ -27,12 +29,16 @@ Page({
         isLoading: false,
         isAd: ad,
         // 轮播
-        indicatorDots: true, // 是否显示圆点
+        indicatorDots: false, // 是否显示圆点
         autoplay: true, // 是否自动滚动
-        interval: 3000, // 轮播时间
-        duration: 500,
+        interval: 3500, // 轮播时间
+        duration: 1000,
         indicator_color: "rgba(217, 217, 217, 1)", // 指示点颜色
         indicator_active_color: "#3F91F0", // 指示点选中颜色
+        day: '',
+        month: '',
+        year: '',
+        staticImage: staticImage
     },
     /**
      * 用户点击右上角分享
@@ -49,7 +55,7 @@ Page({
     onShareTimeline() {
         return {
             title: `${webSiteName}的博客`,
-            imageUrl: '/static/images/author.png'
+            imageUrl: staticImage.author
         }
     },
     /**
@@ -62,14 +68,13 @@ Page({
             postsList: [],
             showerror: "none",
             showallDisplay: "block",
-            displaySwiper: "none",
+            displaySwiper: "block",
             floatDisplay: "none",
             isLastPage: false,
             page: 1,
-            postsShowSwiperList: [],
             listAdsuccess: true
         });
-        this.fetchTopFivePosts();
+        // this.fetchTopFivePosts();
         this.fetchPostsData();
     },
     /**
@@ -95,11 +100,18 @@ Page({
     onLoad: function (options) {
         let self = this;
         // 滚动图信息
-        self.fetchTopFivePosts();
+        // self.fetchTopFivePosts();
         // 文章信息
         self.fetchPostsData();
+        const time = new Date();
+        var year = time.getFullYear();
+        var month = time.getMonth();
+        var day = time.getDate();
         self.setData({
-            isFirst: true
+            isFirst: true,
+            year: year,
+            month: month,
+            day: day < 10 ? '0' + day : day
         });
         // 打开小程序右上角提示
         setTimeout(function () {
@@ -131,7 +143,7 @@ Page({
                     showerror: "block",
                     floatDisplay: "none"
                 });
-            }).final(function () {});;
+            }).final(function () {})
     },
     /**
      * 跳转至查看小程序列表页面或文章详情页
@@ -142,7 +154,7 @@ Page({
         } = e.currentTarget.dataset
         if (url) {
             wx.navigateTo({
-                url: `/pages/feature/articles/articles?id=${encodeURIComponent(url)}`,
+                url: `/pages/articles/articles?id=${encodeURIComponent(url)}`,
                 success: (result) => {},
                 fail: () => {},
                 complete: () => {}
@@ -167,14 +179,16 @@ Page({
                 }
             })
             .catch(res => {
-                console.log(res);
+                this.setData({
+                    showerror: "block",
+                    floatDisplay: "none"
+                });
             })
             .final(res => {
                 wx.hideLoading();
                 wx.stopPullDownRefresh();
                 this.setData({
-                    isLoading: false,
-                    op: 1
+                    isLoading: false
                 })
             });
     },
@@ -186,9 +200,23 @@ Page({
             index
         } = e.currentTarget.dataset
         let errlist = this.data.postsList
-        errlist[index].cover = '/static/images/default_404_img.png'
+        errlist[index].cover = staticImage.image404
         this.setData({
             postsList: errlist
+        })
+    },
+    /**
+     * 导航页图片加载失败 
+     */
+    error404(e) {
+        let {
+            index
+        } = e.currentTarget.dataset
+        let errlist = this.data.topNav
+        // errlist[index].image = staticImage.image404
+        errlist[index].name = ''
+        this.setData({
+            topNav: errlist
         })
     },
     /**
@@ -207,7 +235,7 @@ Page({
         }
         // 跳转到web-view内嵌的页面 
         else if (redicttype == 'webpage') {
-            url = `/pages/feature/webpage/webpage?url=${encodeURIComponent(url)}&text=${encodeURIComponent(url)}`;
+            url = `/pages/generic/webpage/webpage?url=${encodeURIComponent(url)}&text=${encodeURIComponent(url)}`;
             wx.navigateTo({
                 url: url
             })

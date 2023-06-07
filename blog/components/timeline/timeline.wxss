@@ -1,0 +1,51 @@
+.weui-cell-list {
+    display: flex;
+    /* padding: 0 22rpx; */
+}
+
+/* 线 */
+.weui-cell-line {
+    margin-left: -18rpx;
+    padding-left: 26rpx;
+    border-left: 4rpx solid;
+    padding-bottom: 64rpx;
+}
+
+.weui-cell-item>text:first-child {
+    font-weight: bold;
+}
+
+/* 圆 */
+.weui-cell-circle {
+    position: relative;
+    border-radius: 50%;
+    z-index: 99;
+}
+
+/* 占位白 */
+.weui-cell-white {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 50%;
+    background: #fff;
+}
+
+.weui-cell-item {
+    word-wrap: break-word;
+    word-break: break-all;
+    /* width: 356rpx; */
+    line-height: 1.4;
+    margin: 4rpx 0;
+}
+
+.weui-cell-left {
+    word-wrap: break-word;
+    word-break: break-all;
+    /* word-break: normal; */
+    /* width: 172rpx; */
+    padding-bottom: 64rpx;
+    margin-right: 18rpx;
+    text-align: right;
+}

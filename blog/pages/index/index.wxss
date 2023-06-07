@@ -1,5 +1,58 @@
 @import '/template/index/loading.wxss';
 
+page {
+    background: linear-gradient(to right, rgb(235, 229, 229), rgb(226, 221, 221))
+}
+
+.day,
+.month_year {
+    z-index: 1;
+    color: #585354;
+    font-weight: 700;
+}
+
+.day {
+    position: absolute;
+    left: 3%;
+    font-size: 70rpx;
+}
+
+.day::after {
+    content: '|';
+    float: right;
+    margin: 5rpx;
+    font-size: 50rpx;
+}
+
+.month_year {
+    position: absolute;
+    display: flex;
+    left: 18%;
+    font-size: 35rpx;
+    flex-direction: column;
+}
+
+/* 轮播 */
+.uni-margin-wrap {
+    margin: 10rpx;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+
+.swiper,
+.swiper-item {
+    height: 500rpx;
+}
+
+.swiperText {
+    position: absolute;
+    left: 20rpx;
+    bottom: 2%;
+    color: white;
+    font-weight: 550;
+    font-size: 38rpx;
+}
+
 /* 文章列表 */
 .cent-wz-icon {
     display: -webkit-box;
@@ -83,27 +136,6 @@
 
 .ma-60 {
     margin-top: 50rpx;
-}
-
-/* 轮播 */
-.uni-margin-wrap {
-    width: 690rpx;
-    margin: 0 30rpx;
-    border-radius: 20rpx;
-    margin-top: 20rpx;
-}
-
-.swiper {
-    height: 400rpx;
-}
-
-.swiper-item {
-    display: block;
-    height: 400rpx;
-    border-radius: 20rpx;
-    overflow: hidden;
-    /* box-shadow:0px 5px 15px rgba(0,0,0,0.16); */
-    position: relative;
 }
 
 .fr-swiper-img {
@@ -190,36 +222,37 @@
 }
 
 .fr-gju-img {
-    height: 100rpx;
-    width: 100rpx;
+    height: 250rpx;
+    width: 350rpx;
 }
 
 .selected-nav {
-    background-color: var(--themeLightColor);
-    margin: 0rpx 26rpx;
-    border-radius: 10rpx;
     margin-top: 30rpx;
 }
 
 .selected-nav-list {
     display: flex;
-    padding: 8rpx 20rpx 8rpx 20rpx;
+    padding: 8rpx 20rpx;
     justify-content: space-between;
 }
 
 .selected-nav-item {
-    margin-right: 16rpx;
+    margin-right: 20rpx;
     text-align: center;
-    width: 150rpx;
+    width: 550rpx;
 }
 
 .selected-nav-item text {
     line-height: 26rpx;
-    font-size: 24rpx;
-    font-weight: 600;
-    color: var(--titleColor);
     margin-top: -10rpx;
     display: block;
+}
+
+.imgtext {
+    position: relative;
+    bottom: 130rpx;
+    font-size: 50rpx;
+    color: #eee;
 }
 
 .post-data image {
@@ -244,4 +277,10 @@
 .index-page-title {
     position: absolute;
     left: 5rpx;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
 }

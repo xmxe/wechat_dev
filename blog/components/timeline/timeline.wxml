@@ -1,0 +1,19 @@
+<view class='weui-cell-third'>
+    <view class='weui-cell-list'>
+        <!-- 轴左 -->
+        <view class="weui-cell-left" style="width: {{ leftWidth }}rpx;">
+            <slot name="time-left"></slot>
+        </view>
+        <!-- 轴 -->
+        <view class='weui-cell-circle' style="background: {{ color }}; width: {{ size }}rpx; height: {{ size }}rpx;">
+            <view class="weui-cell-white" wx:if="{{ hollow }}" style="width: {{ size / 2 }}rpx; height: {{ size / 2 }}rpx;" />
+        </view>
+        <!-- 轴右 -->
+        <view class="weui-cell-line" style="border-color: {{ lineColor }};">
+            <view class="weui-cell-item" style="width: {{ rightWidth }}rpx;">
+                <slot></slot>
+                <slot name="time-right"></slot>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,3 +1,8 @@
+.box {
+    background: radial-gradient(circle farthest-corner at center, rgb(192, 181, 194), rgb(201, 204, 197), rgb(235, 220, 220), rgb(235, 229, 232));
+    height: 100%;
+}
+
 .loader {
     position: absolute;
     top: 30%;
@@ -8,7 +13,7 @@
 
 .loader-outter {
     position: absolute;
-    border: 4rpx solid #201e27;
+    border: 4rpx solid #264675;
     border-left-color: transparent;
     border-bottom: 0;
     width: 140rpx;
@@ -21,7 +26,7 @@
 
 .loader-inner {
     position: absolute;
-    border: 4rpx solid #2d2a35;
+    border: 4rpx solid #1a8044;
     border-radius: 50%;
     width: 80rpx;
     height: 80rpx;
@@ -37,7 +42,6 @@
     width: 130rpx;
     left: 35%;
     top: 70%
-    
 }
 
 @keyframes loader-1-outter {

@@ -4,14 +4,23 @@
 const appInst = getApp();
 const {
     Api,
-    wxRequest
+    wxRequest,
+    config
 } = appInst.globalData
+
+const {
+    getStaticImage: staticImage
+} = config
+
 Component({
     /**
      * 组件的属性列表
      */
     properties: {
-
+        src: {
+            type: String,
+            value: staticImage.search404
+        },
     },
     /**
      * 组件的初始数据
@@ -22,7 +31,7 @@ Component({
         res_list: [],
         key: ''
     },
-    // 进入页面就开始本地的请求
+    /** 进入页面就开始本地的请求 */
     lifetimes: {
         // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
         attached: function () {
@@ -38,11 +47,11 @@ Component({
                 classStyle: !this.data.classStyle
             })
         },
-        // 关键词切割
+        /** 关键词切割 */
         getInf(str, key) {
             return str.replace(new RegExp(`${key}`, 'g'), `%%${key}%%`).split('%%')
         },
-        // input框输入内容
+        /** input框输入内容 */
         search_key(e) {
             let _this = this;
             let value = e.detail.value.trim()
@@ -88,7 +97,7 @@ Component({
                 })
             }
         },
-        // 获取json数据
+        /** 获取json数据 */
         getJsonData() {
             wxRequest.getRequest(Api.getJsonSearch())
                 .then(res => {
@@ -97,13 +106,13 @@ Component({
                     })
                 })
         },
-        // 页面的跳转
+        /** 页面的跳转 */
         nav_page(e) {
             let {
                 slug
             } = e.currentTarget.dataset
             wx.navigateTo({
-                url: `/pages/feature/articles/articles?id=${encodeURIComponent(slug)}`
+                url: `/pages/articles/articles?id=${encodeURIComponent(slug)}`
             });
         }
     },

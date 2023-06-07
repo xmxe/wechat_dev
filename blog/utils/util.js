@@ -8,6 +8,10 @@ const formatTime = date => {
     return `${[year, month, day].map(formatNumber).join('/')} ${[hour, minute, second].map(formatNumber).join(':')}`
 }
 
+function formatFunc(str) {
+    return str > 9 ? str : '0' + str
+}
+
 const timeChage = res => {
     if (!res) {
         return '-';
@@ -26,7 +30,9 @@ const timeChage = res => {
     let dateStr = year + '.' + mon + '.' + day + ' ' + hour + ':' + min;
     return dateStr;
 }
-// 一言
+/** 
+ * 一言 
+ */
 const hitokoto = (that, wxRequest, url) => {
     wxRequest.getRequest(url).then(res => {
         let hitokoto = res.data.hitokoto;

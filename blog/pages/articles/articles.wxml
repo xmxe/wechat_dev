@@ -1,0 +1,36 @@
+<import src="/template/articles/loading.wxml" />
+<block wx:if="{{isLoding}}">
+    <template is="loading" />
+</block>
+<block wx:else>
+    <view class="articles_wrap">
+        <view class="imgView">
+            <image class="imgCover" src="{{htmlText.covers}}"></image>
+        </view>
+        <view class="hd_wrap">
+            <view class="title_w animated slow rubberBand">{{htmlText.title}}</view>
+            <view class="ic">
+                <view class="img_a">
+                    <image src="{{author_d.img}}" mode="widthFix"></image>
+                </view>
+                <view class="author_w">
+                    <view class="date_w">
+                        <block wx:if="{{htmlText.categories.length!==0}}">
+                            分类: <text class="cates_i" wx:for="{{htmlText.categories}}" wx:for-index="index" wx:for-item="item" wx:key="item" data-name="{{item.name}}" data-mark="1" bindtap="navTo">{{item.name}}</text>
+                        </block>
+                        <block wx:if="{{htmlText.tags.length!==0}}">
+                            标签: <text class="cates_i" wx:for="{{htmlText.tags}}" wx:for-index="index" wx:for-item="item" wx:key="item" data-name="{{item.name}}" data-mark="2" bindtap="navTo">{{item.name}}</text>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <towxml nodes="{{article}}" />
+        <!-- <htmltowxml text="{{htmlText.content}}" bindWxmlTagATap="wxmlTagATap"></htmltowxml> -->
+        <view class="footer_copyright">
+            <view class="item_f"><text>文章作者:</text>{{author_d.name}}</view>
+            <view class="item_f"><text>文章链接:</text><text class="nav_a">{{author_d.domain}}</text></view>
+            <view class="item_f"><text>版权声明:</text>本博客所有文章除特别声明外，均采用<text class="nav_a">CC BY-NC-SA 4.0</text>许可协议。转载请注明来自{{author_d.webname}}</view>
+        </view>
+    </view>
+</block>

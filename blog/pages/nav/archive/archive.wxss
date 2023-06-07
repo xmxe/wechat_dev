@@ -1,0 +1,56 @@
+@import '/pages/index/index.wxss';
+
+page {
+    height: 100%;
+}
+
+.bg {
+    height: 30%;
+    background: url('https://pic1.zhimg.com/v2-ac556b0af22913db1b4f05c6112573f3_r.jpg');
+    background-size: 100% 100%;
+    margin-bottom: 30rpx;
+}
+
+.hitokotoView {
+    height: 100%;
+    text-align: center;
+}
+
+.hitokotoText {
+    position: relative;
+    top: 30%;
+    font-size: 40rpx;
+    font-weight: 300;
+    background-image: -webkit-linear-gradient(top, #c9c9c6, #b4b4bd, #7d8285);
+    /*
+     * background-clip属性指定背景绘制区域。
+     * border-box默认值。背景绘制在边框方框内（剪切成边框方框）。
+     * padding-box背景绘制在衬距方框内（剪切成衬距方框）。
+     * content-box背景绘制在内容方框内（剪切成内容方框）。
+     **/
+    -webkit-background-clip: text;
+    /**文字中填充颜色transparent:透明色**/
+    -webkit-text-fill-color: transparent;
+    /**text-stroke(文本边框)是text-stroke-width和text-stroke-color（边框填充颜色）两个属性的简写**/
+    -webkit-text-stroke: 1rpx transparent;
+}
+
+.cent-wz-h {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.calendar text {
+    font-size: 20rpx;
+}
+
+.calendar image {
+    width: 24rpx;
+    /* vertical-align: middle; */
+}
+
+.no-more {
+    color: rgb(27, 25, 25);
+}

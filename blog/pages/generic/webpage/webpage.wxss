@@ -1,0 +1,13 @@
+page {
+    background: linear-gradient(to right, #adb1b3, #979ca3);
+}
+
+.copy {
+    color: blue;
+}
+
+.wv {
+    position: absolute;
+    top: 30%;
+    font-size: 40rpx;
+}

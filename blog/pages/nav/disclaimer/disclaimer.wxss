@@ -1,0 +1,35 @@
+page {
+    width: 100%;
+    background: rgb(236, 235, 235);
+    color: #374151;
+}
+
+.contains {
+    width: 94%;
+    margin: 0 auto;
+}
+
+.h1 {
+    margin: 0 0 10px;
+    font-weight: 700;
+    font-size: 45rpx;
+    text-align: center;
+}
+
+.h2 {
+    word-wrap: break-word;
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.content {
+    /* 行高 */
+    line-height: 50rpx;
+    font-size: 35rpx;
+    padding: 0 0rpx 0 3px;
+    position: relative;
+    /* 空两格 */
+    text-indent: 2em;
+}

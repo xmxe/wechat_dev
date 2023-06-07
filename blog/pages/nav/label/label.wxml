@@ -1,0 +1,45 @@
+<view class="categories_w">
+    <view class="cate_hd_w">
+        <view class="tag_w_">
+            <view class="tag_w">{{label}}</view>
+            <view class="tag_n">{{dataList.length+"篇"}}</view>
+        </view>
+        <view class="text_w">
+            <view class="t1">{{title}}</view>
+            <view class="t2">{{text}}</view>
+        </view>
+        <view class="img_w_open">
+            <image src="{{staticImage.author}}" mode="widthFix"></image>
+        </view>
+    </view>
+    <view>
+        <view wx:for="{{dataList}}" wx:for-item="item" wx:for-index="index" wx:key="item" style="animation:zoomIn {{index/10<1?1+.1*index:1+.01*index}}s linear">
+            <view class="cent-div" index="{{index}}" id="{{item.id}}" bindtap="nav_page" data-slug="{{item.slug}}" style='opacity:1;transition:all 0.1s;'>
+                <view class="cent-dw">
+                    <view class="cnet-img-w">
+                        <image class="fr-swiper-img" src="{{item.cover}}" binderror="imgerror" data-index="{{index}}" mode="aspectFill"></image>
+                    </view>
+                    <view class="cent-wz-icon">
+                        <text class="index-page-title">{{item.title}}</text>
+                        <view class="post-data">
+                            <block wx:if="{{item.tags.length > 0}}">
+                                <image src="{{staticImage.tagImage}}" mode="widthFix"></image>
+                                <text wx:for="{{item.tags}}" wx:key="tag"> {{item.name}} </text>
+                            </block>
+                            <block wx:if="{{item.categories.length > 0}}">
+                                <image src="{{staticImage.categoryImage}}" mode="widthFix"></image>
+                                <text wx:for="{{item.categories}}" wx:key="categories">{{item.name}}</text>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="cent-div" wx:if="{{isAd.enable&&index%9==0}}">
+                <ad style="transform: none" unit-id="{{isAd.bannerId}}" bindload="adLoad" binderror="adError" bindclose="adClose"></ad>
+            </view>
+        </view>
+
+
+        <view class="remind_w">没有更多数据了</view>
+    </view>
+</view>

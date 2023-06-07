@@ -1,7 +1,8 @@
 {
     "enablePullDownRefresh": true,
     "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "归档",
     "usingComponents": {
-        "search": "/components/search/search"
+        "time-line": "/components/timeline/timeline"
     }
 }

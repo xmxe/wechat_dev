@@ -1,0 +1,62 @@
+<import src="/template/index/loading.wxml" />
+<wxs src="/template/dates.wxs" module="tools"></wxs>
+<view class="bg">
+    <view class="hitokotoView">
+        <text class="hitokotoText">{{text}}</text>
+    </view>
+</view>
+<view style="display:{{showallDisplay}}">
+    <time-line wx:for="{{postsList}}" wx:for-index="index" wx:for-item="item" wx:key="item" data-slug="{{item.slug}}">
+        <block wx:if="{{index % 2 === 0}}">
+            <view style="animation:zoomIn {{index/10<1?1+.1*index:1+.01*index}}s linear" slot="time-left">
+                <view index="{{index}}" id="{{item.id}}" bindtap="redictAppDetail" data-url="{{item.slug}}" style='opacity:{{index >= (page-1)*2?op:"1"}};transition:all {{index >= (page-1)*2?(index-(page-1)*2)*0.5+0.5:"0"}}s;'>
+                    <view class="cent-dw">
+                        <view class="cnet-img-w">
+                            <image class="fr-swiper-img" src="{{item.cover}}" binderror="errorImg" data-index="{{index}}" mode="aspectFill"></image>
+                        </view>
+                        <view class="cent-wz-h">
+                            <text>{{item.title}}</text>
+                            <view class="calendar">
+                                <image src="{{staticImage.calendar}}" mode="widthFix"></image>
+                                <text>{{tools.slice(item.date)}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <block wx:else>
+            <view style="animation:zoomIn {{index/10<1?1+.1*index:1+.01*index}}s linear" slot="time-right">
+                <view index="{{index}}" id="{{item.id}}" bindtap="redictAppDetail" data-url="{{item.slug}}" style='opacity:{{index >= (page-1)*2?op:"1"}};transition:all {{index >= (page-1)*2?(index-(page-1)*2)*0.5+0.5:"0"}}s;'>
+                    <view class="cent-dw">
+                        <view class="cnet-img-w">
+                            <image class="fr-swiper-img" src="{{item.cover}}" binderror="errorImg" data-index="{{index}}"></image>
+                        </view>
+                        <view class="cent-wz-h">
+                            <text>{{item.title}}</text>
+                            <view class="calendar">
+                                <image src="{{staticImage.calendar}}" mode="widthFix"></image>
+                                <text>{{tools.slice(item.date)}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </time-line>
+    <view style='display:{{isLoading?"block":"none"}}'>
+        <template is="tempLoading" />
+    </view>
+    <!-- 无更多文章提示 -->
+    <view class="loadingmore" style="display:{{floatDisplay}}">
+        <view class="no-more" hidden="{{!isLastPage}}">- 无更多文章 -</view>
+    </view>
+</view>
+
+<!-- 无法访问网络 -->
+<view class="showerror" style="display:{{showerror}}">
+    <image src="{{staticImage.web_error}}" style="height:100rpx;width:100rpx"></image>
+    <view class="errortext">
+        暂时无法访问网络，下拉重试...
+    </view>
+</view>

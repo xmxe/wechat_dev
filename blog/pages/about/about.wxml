@@ -1,0 +1,32 @@
+<view class="top">
+    <view class="pic">
+        <view class="avatar"></view>
+        <view class="text">
+            <text>{{text}}</text>
+        </view>
+    </view>
+</view>
+<wave src="{{staticImage.bg_wave}}"></wave>
+<view class="table-box">
+    <view class="table">
+        <!-- 表格标题 -->
+        <view class="tr">
+            <view class="th" bindtap="redictPage" data-url="{{posts.url}}">{{posts.length}}</view>
+            <view class="th" bindtap="redictPage" data-url="{{categories.url}}">{{categories.length}}</view>
+            <view class="th" bindtap="redictPage" data-url="{{tags.url}}">{{tags.length}}</view>
+        </view>
+        <!-- 表格内容 -->
+        <view class="tr">
+            <view class="td">{{posts.text}}</view>
+            <view class="td">{{categories.text}}</view>
+            <view class="td">{{tags.text}}</view>
+        </view>
+    </view>
+</view>
+<view class="list">
+    <view class="content" wx:for="{{aboutList}}" wx:for-item="item" wx:for-index="index" wx:key="item" bindtap="redictPage" data-url="{{item.url}}">
+        <image src="{{item.icon}}"></image>
+        <text>{{item.text}}</text>
+        <view class="triangle"></view>
+    </view>
+</view>

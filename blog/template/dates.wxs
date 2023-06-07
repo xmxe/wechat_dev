@@ -17,9 +17,16 @@ var change = function (value) {
 }
 
 var slice = function (value) {
-    return value === null ? 'xmxe' : value.split('T')[0]
+    return value === null ? '' : value.split('T')[0]
 }
+
+var monthAbbr = function (month) {
+    var monthAbbr = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']
+    return monthAbbr[month]
+}
+
 module.exports = {
     timeChange: change,
-    slice: slice
+    slice: slice,
+    monthAbbr: monthAbbr
 }
