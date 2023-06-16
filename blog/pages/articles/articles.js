@@ -2,7 +2,8 @@ const appInst = getApp();
 const {
     config,
     Api,
-    wxRequest
+    wxRequest,
+    util
 } = appInst.globalData
 const towxml = require('../../components/towxml/index')
 Page({
@@ -55,6 +56,32 @@ Page({
                                 if (event.detail.src) {
                                     _this.wxmlTagATap(event)
                                 }
+                            },
+                            // 复制代码
+                            copy: (e) => {
+                                let copyed_code = ""
+                                const extract_code = (parsed_item) => {
+                                    if (!parsed_item.children) {
+                                        return
+                                    }
+                                    parsed_item.children.forEach(item => {
+                                        if (item.raw_tag == "ul" || (item.attrs.class && item.attrs.class.indexOf("h2w__lineNum") != -1)){
+                                            return
+                                        }else if (item.raw_tag == "p") {
+                                            copyed_code = copyed_code + "\n\n"
+                                        }else if (item.raw_tag == "br") {
+                                            copyed_code = copyed_code + "\n"
+                                        }else if (item.type == "text") {
+                                            copyed_code = copyed_code + item.text
+                                        }else {
+                                            extract_code(item)
+                                        }
+
+                                    })
+                                }
+                                extract_code(e.target.dataset.data)
+                                // 写入剪切板
+                                util.clipboard(copyed_code)
                             }
                         }
                     });

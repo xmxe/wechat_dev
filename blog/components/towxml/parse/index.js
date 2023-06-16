@@ -72,6 +72,16 @@ const parse2 = require('./parse2/index'),
                     }else{
                         o.tag = getWxmlTag(item.name);      // 转换之后的标签
                         // o.tag = o.tag === 'text' ? 'view' : o.tag;
+                        o.raw_tag = item.name                    
+                        // code block has parent element with class "h2w__pre"
+                        // inline block has parent element with class "h2w__p" or "h2w__li"
+                        // inline block no support copy
+                        if (item.name == "code" && item.parent && item.parent.attribs && item.parent.attribs.class) {
+                            if (item.parent.attribs.class.indexOf('h2w__pre') === -1) {
+                                o.raw_tag = "inline_code"
+                            }
+                        }
+                        
                         e.tag = item.name;                  // 原始
                         o.attrs = item.attribs;
                         e.attrs = JSON.parse(JSON.stringify(attrs));

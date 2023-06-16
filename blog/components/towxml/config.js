@@ -281,6 +281,7 @@ module.exports = {
         // 'touchend',
         'tap',                      // 用于元素的点击事件
         'change',                   // 用于todoList的change事件
+        'copy',                     // 代码复制事件
     ],
 
     // 图片倍数
