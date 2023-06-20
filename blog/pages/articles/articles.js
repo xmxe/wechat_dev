@@ -41,21 +41,35 @@ Page({
                 if (res.statusCode == 200) {
                     let result = towxml(`${res.data.content}`, 'markdown', {
                         // 相对资源的base路径
-                        // base:'https://xxx.com',
+                        base: config.getDomain + '/',
                         // 主题，默认`light`
                         // theme:'dark',
                         // 为元素绑定的事件方法
                         events: {
                             tap: (e) => {
-                                const event = {
-                                    detail: {
-                                        src: e.currentTarget.dataset.data.attrs.href,
-                                        text: e.currentTarget.dataset.data.children[0].text
+                                const src = e.currentTarget.dataset.data.attrs.src
+                                // 图片
+                                if (src) {
+                                    const url = src.indexOf("oss") != -1 ? "https://images.weserv.nl/?url=" + src : src
+                                    wx.previewImage({
+                                        current: url, // 当前显示图片的http链接
+                                        urls: [url] // 需要预览的图片http链接列表
+                                        
+                                    })
+                                }
+                                // a标签
+                                else {
+                                    const event = {
+                                        detail: {
+                                            src: e.currentTarget.dataset.data.attrs.href,
+                                            text: e.currentTarget.dataset.data.children[0].text
+                                        }
+                                    }
+                                    if (event.detail.src) {
+                                        _this.wxmlTagATap(event)
                                     }
                                 }
-                                if (event.detail.src) {
-                                    _this.wxmlTagATap(event)
-                                }
+
                             },
                             // 复制代码
                             copy: (e) => {
@@ -65,15 +79,15 @@ Page({
                                         return
                                     }
                                     parsed_item.children.forEach(item => {
-                                        if (item.raw_tag == "ul" || (item.attrs.class && item.attrs.class.indexOf("h2w__lineNum") != -1)){
+                                        if (item.raw_tag == "ul" || (item.attrs.class && item.attrs.class.indexOf("h2w__lineNum") != -1)) {
                                             return
-                                        }else if (item.raw_tag == "p") {
+                                        } else if (item.raw_tag == "p") {
                                             copyed_code = copyed_code + "\n\n"
-                                        }else if (item.raw_tag == "br") {
+                                        } else if (item.raw_tag == "br") {
                                             copyed_code = copyed_code + "\n"
-                                        }else if (item.type == "text") {
+                                        } else if (item.type == "text") {
                                             copyed_code = copyed_code + item.text
-                                        }else {
+                                        } else {
                                             extract_code(item)
                                         }
 
