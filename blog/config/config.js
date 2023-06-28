@@ -95,14 +95,14 @@ const SWIPER = [{
 
 // 关于页
 const ABOUT = [{
-        text: '友情链接',
-        icon: DOMAIN + '/static/images/link.svg',
-        url: '/pages/nav/friends/friends'
-    },
-    {
         text: '免责声明',
         icon: DOMAIN + '/static/images/mz.svg',
         url: '/pages/nav/disclaimer/disclaimer'
+    },
+    {
+        text: '友情链接',
+        icon: DOMAIN + '/static/images/link.svg',
+        url: '/pages/nav/friends/friends'
     },
     {
         text: '联系博主',
@@ -117,7 +117,6 @@ const SOCIAL_LINK = [{
         icon: DOMAIN + '/static/images/email.png',
         url: '464817304@qq.com'
     },
-
     {
         text: '博客',
         icon: DOMAIN + '/static/images/blog.png',
@@ -187,8 +186,6 @@ const FRIENDS_LINK = [{
         appId: 'https://n459.com/file/5210373-315857187'
     }
 ]
-
-
 
 export default {
     getDomain: DOMAIN,

@@ -13,7 +13,7 @@
         </view>
         <!-- 表格内容 -->
         <view class="tr">
-            <view class="td animated bounceInDown" wx:key="id" wx:for="{{social_link}}" wx:for-item="item" wx:for-index="index">
+            <view class="td animated bounceInUp" wx:key="id" wx:for="{{social_link}}" wx:for-item="item" wx:for-index="index">
                 <text>{{item.text}}</text>
             </view>
         </view>

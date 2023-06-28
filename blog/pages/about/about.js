@@ -53,37 +53,35 @@ Page({
      */
     onReady: function () {
         let me = this
-        wxRequest.getRequest(Api.getCategories()).then(res => {
-            if (res.statusCode == 200) {
-                me.setData({
-                    categories: {
-                        length: res.data.length,
-                        url: '/pages/nav/planet/planet?mark=1',
-                        text: '分类'
-                    }
-                })
-            }
-        })
-
-        wxRequest.getRequest(Api.getTags()).then(res => {
-            if (res.statusCode == 200) {
-                me.setData({
-                    tags: {
-                        length: res.data.length,
-                        url: '/pages/nav/planet/planet?mark=2',
-                        text: '标签'
-                    }
-                })
-            }
-        })
-
         wxRequest.getRequest(Api.getPosts()).then(res => {
             if (res.statusCode == 200) {
+                const resData = res.data;
+                // 创建一个Set
+                const categoriesSet = new Set();
+                const tagsSet = new Set();
+                resData.forEach(item => {
+                    item.categories.forEach(categorie => {
+                        categoriesSet.add(categorie.name);
+                    });
+                    item.tags.forEach(tag => {
+                        tagsSet.add(tag.name);
+                    });
+                });
                 me.setData({
                     posts: {
-                        length: res.data.length,
+                        length: resData.length,
                         url: '/pages/nav/archive/archive',
                         text: '文章'
+                    },
+                    tags: {
+                        length: tagsSet.size,
+                        url: '/pages/nav/planet/planet?mark=2',
+                        text: '标签'
+                    },
+                    categories: {
+                        length: categoriesSet.size,
+                        url: '/pages/nav/planet/planet?mark=1',
+                        text: '分类'
                     }
                 })
             }

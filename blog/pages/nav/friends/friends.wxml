@@ -20,7 +20,7 @@
         </view>
         <!-- 表格内容 -->
         <view class="tr">
-            <view class="td animated rollIn" wx:key="text" wx:for="{{tools.slice(friendsLink,index,index+3)}}" wx:for-item="item" wx:for-index="i">
+            <view class="td animated swing" wx:key="text" wx:for="{{tools.slice(friendsLink,index,index+3)}}" wx:for-item="item" wx:for-index="i">
                 <text>{{item.text}}</text>
             </view>
         </view>

@@ -24,15 +24,15 @@
         "backgroundColor": "#ffffff",
         "list": [{
                 "pagePath": "pages/index/index",
-                "iconPath": "static/tabar/home.png",
-                "selectedIconPath": "static/tabar/home_h.png",
+                "iconPath": "static/tabar/index_n.png",
+                "selectedIconPath": "static/tabar/index.png",
                 "text": "首页"
             },
 
             {
                 "pagePath": "pages/about/about",
-                "iconPath": "static/tabar/my.png",
-                "selectedIconPath": "static/tabar/my_h.png",
+                "iconPath": "static/tabar/about_n.png",
+                "selectedIconPath": "static/tabar/about.png",
                 "text": "关于"
             }
         ]
