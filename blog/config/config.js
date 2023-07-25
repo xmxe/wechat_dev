@@ -134,59 +134,6 @@ const SOCIAL_LINK = [{
     }
 ]
 
-// 友情链接
-const FRIENDS_LINK = [{
-        src: 'https://picx.zhimg.com/v2-d40103e323d411af13b8ec4324b6e04d_1440w.jpg',
-        text: '跳一跳',
-        appId: 'wx7c8d593b2c3a7703'
-    },
-    {
-        src: DOMAIN + '/download/assert/ltt.jpg',
-        text: '李跳跳',
-        appId: 'https://www.123pan.com/s/ZYAZVv-TBYjd.html'
-    },
-    {
-        src: DOMAIN + '/download/assert/github.jpg',
-        text: 'GitHub App',
-        appId: 'https://apkpure.com/cn/github/com.github.android'
-    },
-    {
-        src: DOMAIN + '/download/assert/ah.png',
-        text: 'AH视频',
-        appId: 'https://ahsp.app'
-    },
-    {
-        src: DOMAIN + '/download/assert/qywx.jpg',
-        text: '企业微信',
-        appId: 'https://www.wandoujia.com/apps/6860656/history_v16713'
-    },
-    {
-        src: DOMAIN + '/download/assert/v.jpg',
-        text: 'v2rayNG',
-        appId: 'https://github.com/2dust/v2rayNG/releases'
-    },
-    {
-        src: DOMAIN + '/download/assert/fakelocation.jpg',
-        text: 'FakeLocation',
-        appId: 'https://github.com/Lerist/FakeLocation/releases'
-    },
-    {
-        src: DOMAIN + '/download/assert/everything.jpg',
-        text: 'Everything',
-        appId: 'https://www.voidtools.com/zh-cn/'
-    },
-    {
-        src: DOMAIN + '/download/assert/listary.png',
-        text: 'Listary',
-        appId: 'https://www.listary.com/'
-    },
-    {
-        src: DOMAIN + '/download/assert/ps.jpg',
-        text: 'PS CC2019直装版',
-        appId: 'https://n459.com/file/5210373-315857187'
-    }
-]
-
 export default {
     getDomain: DOMAIN,
     getWebsiteName: WEBSITENAME,
@@ -196,6 +143,5 @@ export default {
     getSwiper: SWIPER,
     getStaticImage: STATICIMAGE,
     getAboutList: ABOUT,
-    getSocialLink: SOCIAL_LINK,
-    getFriendsLink: FRIENDS_LINK
+    getSocialLink: SOCIAL_LINK
 }

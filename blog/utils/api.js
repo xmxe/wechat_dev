@@ -44,5 +44,9 @@ module.exports = {
     // 获取一言JSON数据
     hitokoto() {
         return 'https://v1.hitokoto.cn'
+    },
+    // 获取友情链接数据
+    friendsLink() {
+        return Domain + '/download/assert/friends.json'
     }
 }

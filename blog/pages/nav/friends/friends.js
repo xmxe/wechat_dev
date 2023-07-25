@@ -1,17 +1,35 @@
 const appInst = getApp();
 const {
+    Api,
+    wxRequest,
     config,
     util
 } = appInst.globalData
-let {
-    getFriendsLink: friendsLink
-} = config
+
 Page({
-
     data: {
-        friendsLink: friendsLink
+        friendsLink: ''
     },
-
+    onLoad: function (options) {
+        let self = this;
+        wxRequest.getRequest(Api.friendsLink()).then(response => {
+            if (response.statusCode == '200' && response.data.length > 0) {
+                const friendLink = response.data.map(obj => {
+                    if (obj.src.indexOf("http") != -1) {
+                        return obj
+                    } else {
+                        return {
+                            ...obj,
+                            src: config.getDomain + "/download/" + obj.src
+                        };
+                    }
+                })
+                self.setData({
+                    friendsLink: friendLink
+                })
+            }
+        })
+    },
     // 跳转到小程序or复制链接
     navigateTo: function (e) {
         const {
@@ -34,6 +52,5 @@ Page({
                 }
             })
         }
-
     }
 })
