@@ -1,5 +1,5 @@
 // 配置域名,域名只修改此处。可以配置为根域名
-const DOMAIN = "https://xmxe.gitee.io/blog"
+const DOMAIN = "https://gitee.com/xmxe/blog/raw/main"
 // const DOMAIN = "http://localhost:4000/blog"
 // 网站名称
 const WEBSITENAME = "熊猫小二"
