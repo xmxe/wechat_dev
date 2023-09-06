@@ -2,7 +2,8 @@ const appInst = getApp();
 const {
     config,
     Api,
-    wxRequest
+    wxRequest,
+    util
 } = appInst.globalData
 let {
     getWebsiteName: webSiteName,
@@ -103,6 +104,8 @@ Page({
         // self.fetchTopFivePosts();
         // 文章信息
         self.fetchPostsData();
+        // 弹窗通知
+        // self.showModal();
         const time = new Date();
         var year = time.getFullYear();
         var month = time.getMonth();
@@ -160,6 +163,20 @@ Page({
                 complete: () => {}
             });
         }
+    },
+    showModal() {
+        let content = '此小程序被认定服务内容涉及信息资讯，而信息资讯属于个人主体未开放服务类目。如需阅读请浏览器访问https://xmxe.gitee.io/blog。点击确定后复制链接。'
+        wx.showModal({
+          title: '通知',
+          content: content,
+          complete: (res) => {
+            if (res.cancel) {}
+        
+            if (res.confirm) {
+              util.clipboard('https://xmxe.gitee.io/blog')
+            }
+          }
+        })
     },
     /**
      * 获取文章的数据信息
